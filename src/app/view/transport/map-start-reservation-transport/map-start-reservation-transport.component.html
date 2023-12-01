@@ -1,0 +1,225 @@
+<div id="preloader">
+  <div class="spinner-border color-highlight" role="status"></div>
+</div>
+
+<!-- <div id="page"> -->
+<div class="d-flex flex-column">
+  <div class="page-content py-0 my-0">
+    <div
+      class="page-title page-title-small"
+      style="margin: 10px 20px 18px 20px"
+    >
+      <h2 class="font-12" style="font-size: 15px !important">
+        <a href="#" data-back-button
+          ><i class="fa fa-arrow-left" style="font-size: 14px"></i></a
+        >PRIVATE VIP CAR
+      </h2>
+      <!-- <a
+        href="#"
+        data-menu="sh-menu-cart-pop-item-edit"
+        class="icon icon-s rounded-l shadow-xl bg-highlight color-white float-right"
+      >
+        <i class="fa fa-shopping-bag" style="font-size: 12px"></i>
+      </a> -->
+    </div>
+
+    <div class="card header-card" data-card-height="150">
+      <div class="card-overlay bg-black opacity-0"></div>
+      <div class="card-overlay dark-mode-tint"></div>
+      <div
+        class="card-bg preload-img"
+        data-src="assets/images/pictures/29.jpg"
+      ></div>
+    </div>
+
+    <div
+      class="card card-style mb-0"
+      style="
+        margin: 0px 0px 0px 0px;
+        overflow: visible;
+        margin: 0px 0px 0px 0px;
+      "
+    >
+      <div class="card mb-0" data-card-height="100vh">
+        <!-- <div
+          class="display-area"
+          [hidden]="!fromValue.address && !toValue.address"
+        > -->
+        <!-- <div>
+            <app-place-card [data]="fromValue"></app-place-card>
+            <app-place-card [data]="toValue"></app-place-card>
+          </div> -->
+        <app-map-display
+          [from]="fromValue"
+          [to]="toValue"
+          style="width: 100%"
+        ></app-map-display>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="sh-menu-cart-pop-item-edit"
+    class="menu menu-box-bottom menu-box-detached rounded-m menu-active"
+    data-menu-height="50vh"
+    data-menu-effect="menu-over"
+    style="bottom: 0px; left: 0px; right: 0px; border-radius: 10% 10% 0% 0%"
+  >
+    <div class="card card-style bg-theme pb-0" style="margin: 0px 0px 0px 0px">
+      <div
+        class="content"
+        style="
+          margin: 24px 0px 0px 0px;
+          border-radius: 15% 15% 0% 0% !important;
+        "
+      >
+        <div
+          class="tab-controls tabs-round tab-animated tabs-small tabs-rounded shadow-xl d-flex justify-content-center"
+          data-tab-items="4"
+          data-tab-active="bg-highlight activated color-white"
+          style="
+            box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0),
+              0 0px 0px 0 rgba(0, 0, 0, 0.08) !important;
+          "
+        >
+          <a href="#" data-tab-active data-tab="tab-1">Simple</a>
+          <a href="#" data-tab="tab-2">À l'heure</a>
+        </div>
+        <div class="clearfix mb-2"></div>
+        <div class="tab-content" id="tab-1" style="-webkit-transform: none">
+          <div class="content">
+            <app-place-autocomplete
+              (placeChanged)="fromValue = $event"
+              placeholder="Entrer votre lieu de prise en charge"
+              label="Départ"
+            ></app-place-autocomplete>
+            <app-place-autocomplete
+              (placeChanged)="toValue = $event"
+              placeholder="Entrer votre lieu d'arrivée"
+              label="Arrivée"
+            ></app-place-autocomplete>
+            <!-- <div class="col-12">
+              <div class="input-style-2 input-required">
+                <span class="input-style-1-active">Départ</span>
+                <input
+                  type="text"
+                  placeholder="Entrer votre lieu de prise en charge"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-style-2 input-required">
+                <span class="input-style-1-active">Arrivée</span>
+                <input type="text" placeholder="" />
+              </div>
+            </div> -->
+
+            <!-- <div class="col-12">
+                <div class="input-style-2 input-required">
+                  <span class="input-style-1-active">Date de départ</span>
+                  <input
+                    type="date"
+                    name="date_depart"
+                    value="2022-08-26"
+                    [(ngModel)]="date_depart"
+                    style="height: 45px"
+                  />
+                </div>
+              </div> -->
+
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active"
+                >Date de départ</span
+              >
+              <!-- <em>(*)</em> -->
+              <input
+                class="form-control"
+                type="date"
+                name="date_depart"
+                style="height: 45px"
+                [(ngModel)]="date_depart"
+              />
+            </div>
+
+            <!-- <div class="col-12"> -->
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active"
+                >Heure de départ</span
+              >
+              <!-- <em>(*)</em> -->
+              <input
+                class="form-control"
+                type="time"
+                name="heure_depart"
+                value="23:30"
+                style="height: 45px"
+                [(ngModel)]="heure_depart"
+              />
+            </div>
+            <!-- <mat-form-field>
+              <mat-label>Snack bar duration (seconds)</mat-label>
+              <input type="number" [(ngModel)]="durationInSeconds" matInput>
+            </mat-form-field>
+
+            <button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
+              Pizza party
+            </button> -->
+
+            <!-- </div> -->
+
+            <!-- <div class="col-12">
+                <div class="input-style-2 input-required">
+                  <span class="input-style-1-active"></span>
+                  <input
+                    type="time"
+                    value="23:30"
+                    style="height: 45px"
+                    [(ngModel)]="heure_depart"
+                  />
+                </div>
+              </div> -->
+            <button
+              class="btn btn-full bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900 mb-2 w-100"
+              style="padding: 6px 20px !important"
+              (click)="storeAndGetAvaillableCar()"
+            >
+              Valider
+            </button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-2">
+          <p class="bottom-0">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  id="sh-alert-added-to-cart"
+  class="snackbar-toast bg-green1-dark color-white"
+  data-delay="3000"
+  data-autohide="true"
+>
+  <i class="fa fa-shopping-cart mr-3"></i>Ajouté avec succès au panier de
+  réservations
+</div>
+
+<div
+  id="sh-menu-cart-pop-item-list"
+  class="menu menu-box-bottom menu-box-detached rounded-m"
+  data-menu-height="455"
+  data-menu-effect="menu-over"
+>
+  <!-- <app-panier-transport></app-panier-transport> -->
+</div>
+<!-- </div> -->
+
+<!-- <mat-toolbar color="primary"> My Journey Planner </mat-toolbar> -->

@@ -1,0 +1,641 @@
+<div id="preloader">
+  <div class="spinner-border color-highlight" role="status"></div>
+</div>
+
+<div id="page">
+  <!-- header and footer bar go here-->
+  <div id="footer-bar" class="footer-bar-5">
+    <a href="sh-index.html" class="active-nav"
+      ><i
+        data-feather="home"
+        data-feather-line="1"
+        data-feather-size="26"
+        data-feather-color="blue2-dark"
+        data-feather-bg="magenta1"
+      ></i
+      ><span>Accueil</span></a
+    >
+    <a href="sh-reservation.html"
+      ><i
+        data-feather="shopping-bag"
+        data-feather-line="1"
+        data-feather-size="26"
+        data-feather-color="blue2-dark"
+        data-feather-bg="magenta1-fade-light"
+      ></i
+      ><span>Réservations</span></a
+    >
+    <a href="sh-message.html"
+      ><i
+        data-feather="message-square"
+        data-feather-line="1"
+        data-feather-size="26"
+        data-feather-color="blue2-dark"
+        data-feather-bg="magenta1-fade-light"
+      ></i
+      ><span>Messages</span></a
+    >
+    <a href="sh-search.html"
+      ><i
+        data-feather="search"
+        data-feather-line="1"
+        data-feather-size="26"
+        data-feather-color="blue2-dark"
+        data-feather-bg="magenta1-fade-light"
+      ></i
+      ><span>Rechercher</span></a
+    >
+    <a href="sh-account.html"
+      ><i
+        data-feather="user"
+        data-feather-line="1"
+        data-feather-size="26"
+        data-feather-color="blue2-dark"
+        data-feather-bg="magenta1-fade-light"
+      ></i
+      ><span>Compte</span></a
+    >
+  </div>
+
+  <div class="page-content">
+    <div class="page-title page-title-large">
+      <h2 data-username="Wilfried !" class="greeting-text"></h2>
+      <a
+        href="#"
+        data-menu="sh-menu-main"
+        class="bg-fade-gray1-dark shadow-xl preload-img"
+        data-src="assets/images/avatars/5s.png"
+      ></a>
+    </div>
+    <div class="card header-card" data-card-height="140">
+      <div
+        class="card-bg preload-img"
+        data-src="assets/images/pictures/20.jpg"
+      ></div>
+    </div>
+
+    <div class="card-body">
+      <div class="card card-style ml-0 mr-0 mb-0 bg-white">
+        <div class="content">
+          <div class="search-box bg-theme rounded-m shadow-xl bottom-0">
+            <i class="fa fa-search"></i>
+            <form action="sh-search.html">
+              <input
+                type="text"
+                class="border-0"
+                placeholder="Que recherchez-vous aujourd'hui ? "
+                data-search
+              />
+            </form>
+          </div>
+        </div>
+        <div class="row text-center mr-2 ml-2 mb-1 mt-0">
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a href="sh-srv01-index.html" class="rounded-s shadow-l"
+              ><i class="fa fa-home font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">Résidence</p>
+          </div>
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a
+              href=""
+              class="rounded-s shadow-l"
+              (click)="goToTransportHomePage()"
+              ><i class="fa fa-car font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">Voiture Privée</p>
+          </div>
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a href="sh-srv03-index.html" class="rounded-s shadow-l"
+              ><i class="fa fa-credit-card font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">Fidelux</p>
+          </div>
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a href="sh-srv04-index.html" class="rounded-s shadow-l"
+              ><i class="fa fa-calendar-alt font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">Evènement</p>
+          </div>
+        </div>
+        <div class="row text-center mr-2 ml-2 mb-0 mt-1">
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a href="sh-srv05-index.html" class="rounded-s shadow-l"
+              ><i class="fa fa-shopping-bag font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">Vente Privée</p>
+          </div>
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a href="sh-srv06-index.html" class="rounded-s shadow-l"
+              ><i class="fa fa-user-friends font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">VIP Airport</p>
+          </div>
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a href="sh-srv07-index.html" class="rounded-s shadow-l"
+              ><i class="fa fa-plane-departure font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">Vols</p>
+          </div>
+          <div class="col-3 m-0 pl-0 pr-0 mb-n4">
+            <a href="#" data-menu="sh-menu-main" class="rounded-s shadow-l"
+              ><i class="fas fa-ellipsis-h font-22"></i><br
+            /></a>
+            <p class="font-10 opacity-70">Plus</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider divider-margins"></div>
+
+    <div class="content">
+      <h5 class="font-16 font-500 mb-0">
+        <a href="sh-srv01-index.html">
+          <i class="fa fa-home font-18 color-black"></i>
+          <span class="color-black">Nos résidences par destination</span>
+        </a>
+      </h5>
+      <p class="float-left mb-0">Un cadre soigné pour votre temps à vous</p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="double-slider owl-carousel owl-no-dots">
+      <div class="rounded-m shadow-l">
+        <div data-card-height="200" class="card mb-3 bg-1">
+          <div class="card-bottom">
+            <h5 class="color-white text-left ml-2 mb-0">Assinie</h5>
+            <span
+              class="badge bg-highlight ml-2 mb-2 color-white text-uppercase"
+              >Sélectionner</span
+            >
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+      </div>
+      <div class="rounded-m shadow-l">
+        <div data-card-height="200" class="card mb-3 bg-2">
+          <div class="card-bottom">
+            <h5 class="color-white text-left ml-2 mb-0">Yamoussoukro</h5>
+            <span
+              class="badge bg-highlight ml-2 mb-2 color-white text-uppercase"
+              >Sélectionner</span
+            >
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider divider-margins"></div>
+
+    <div class="content">
+      <h5 class="font-16 font-500 mb-0">
+        <a href="sh-srv02-index.html">
+          <i class="fa fa-car font-18 color-black"></i>
+          <span class="color-black">Réservez une course sur Sherylux</span>
+        </a>
+      </h5>
+      <p class="float-left mb-0">
+        Sécurité et confort, pour tous vos déplacements
+      </p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="double-slider owl-carousel owl-no-dots mb-4">
+      <div class="item">
+        <div data-card-height="200" class="card bg-3 rounded-m shadow-l mb-0">
+          <div class="card-bottom text-center mb-4">
+            <h6 class="color-white text-uppercase font-300">Business Class</h6>
+            <a
+              href="#"
+              class="btn btn-xs btn-center-xs badge bg-highlight color-white text-uppercase"
+              >Commander</a
+            >
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+      </div>
+      <div class="item">
+        <div data-card-height="200" class="card bg-4 rounded-m shadow-l mb-0">
+          <div class="card-bottom text-center mb-4">
+            <h6 class="color-white text-uppercase font-300">First Class</h6>
+            <a
+              href="#"
+              class="btn btn-xs btn-center-xs badge bg-highlight color-white text-uppercase"
+              >Commander</a
+            >
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+      </div>
+      <div class="item">
+        <div data-card-height="200" class="card bg-5 rounded-m shadow-l mb-0">
+          <div class="card-bottom text-center mb-4">
+            <h6 class="color-white text-uppercase font-300">
+              Business VAN/SUV
+            </h6>
+            <a
+              href="#"
+              class="btn btn-xs btn-center-xs badge bg-highlight color-white text-uppercase"
+              >Commander</a
+            >
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider divider-margins"></div>
+
+    <div class="content">
+      <h5 class="font-16 font-500 mb-0">
+        <a href="sh-srv03-index.html">
+          <i class="fa fa-credit-card font-18 color-black"></i>
+          <span class="color-black">Nos Cartes Fidelux</span>
+        </a>
+      </h5>
+      <p class="float-left mb-0">
+        Profitez de réductions exceptionnelles pouvant aller jusqu'à 50% et
+        bénéficiez d'un accès privilégié à nos évènements
+      </p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div data-card-height="230" class="card card-style rounded-m shadow-l bg-6">
+      <div class="card-top mt-3 pt-1 mr-3">
+        <a
+          href="#"
+          class="float-right font-11 btn btn-xs font-800 text-uppercase rounded-xs bg-highlight"
+          >En Vente</a
+        >
+      </div>
+      <div class="card-bottom ml-3">
+        <h1 class="color-white mb-n1 bolder mb-3 pb-1">Carte Fidelux</h1>
+        <p class="bottom-0 color-white opacity-50 font-12">
+          Découvrez la Carte Privilège à partir de
+        </p>
+      </div>
+      <div class="card-bottom">
+        <div class="float-right mr-3">
+          <h1 class="text-right color-white font-14 bolder pb-4">
+            +200 000 FCFA
+          </h1>
+        </div>
+      </div>
+      <div class="card-overlay bg-black opacity-70"></div>
+    </div>
+
+    <div class="divider divider-margins mt-0"></div>
+
+    <div class="content mb-3">
+      <h5 class="font-16 font-500 mb-0">
+        <a href="sh-srv04-index.html">
+          <i class="fa fa-credit-card font-18 color-black"></i>
+          <span class="color-black">Évènements</span>
+        </a>
+      </h5>
+      <p class="float-left mb-0">
+        Soyez le premier informé de nos prochains evèments
+      </p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="single-slider-boxed owl-carousel owl-no-dots">
+      <div data-card-height="300" class="card bg-7 rounded-m shadow-l">
+        <div class="card-top mt-3 mr-3">
+          <a
+            href="#"
+            data-menu="menu-confirm"
+            class="icon icon-s rounded-l shadow-xl bg-highlight color-white float-right"
+            ><i class="fa fa-bell"></i
+          ></a>
+        </div>
+        <div class="card-bottom text-center mb-3">
+          <h2 class="color-white text-uppercase font-700 mb-0">
+            Vente Privée de Luxe
+          </h2>
+          <p class="under-heading color-white">Jeudi 31 Oct 2022, 09:00</p>
+          <p class="date">Assinie - Complexe Sherylux</p>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+      </div>
+      <div data-card-height="300" class="card bg-8 rounded-m shadow-l">
+        <div class="card-top mt-3 mr-3">
+          <a
+            href="#"
+            data-menu="menu-confirm"
+            class="icon icon-s rounded-l shadow-xl bg-highlight color-white float-right"
+            ><i class="fa fa-bell"></i
+          ></a>
+        </div>
+        <div class="card-bottom text-center mb-3">
+          <h2 class="color-white text-uppercase font-700 mb-0">
+            Concert Privé
+          </h2>
+          <p class="under-heading color-white">Jeudi 21 Mai 2022, 09:00</p>
+          <p class="date">Yamoussoukro - Complexe Sherylux</p>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+      </div>
+    </div>
+
+    <div class="divider divider-margins mt-0"></div>
+
+    <div class="content mb-3">
+      <h5 class="font-16 font-500 mb-0">
+        <a href="sh-srv05-index.html">
+          <i class="fa fa-shopping-bag font-18 color-black"></i>
+          <span class="color-black">Ventes privées</span>
+        </a>
+      </h5>
+      <p class="float-left mb-0">
+        Prêt-à porter, Bijoux, Montres, Chaussures, Parfums
+      </p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="double-slider owl-carousel owl-no-dots">
+      <div class="item bg-theme pb-3 rounded-m shadow-l">
+        <div data-card-height="200" class="card mb-3 bg-9">
+          <div class="card-bottom">
+            <h5 class="color-white text-center pr-2 pb-2">
+              Montre <br />
+              Rolex
+            </h5>
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+        <div class="d-flex px-3">
+          <div>
+            <h5 class="mb-n1">124 000 FCFA</h5>
+            <span class="opacity-60"
+              ><em><s>214 000 FCFA</s></em></span
+            >
+            <p class="mb-0">
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+            </p>
+            <p class="color-green1-dark mb-0 font-11">Disponible en stock</p>
+          </div>
+        </div>
+      </div>
+      <div class="item bg-theme pb-3 rounded-m shadow-l">
+        <div data-card-height="200" class="card mb-3 bg-10">
+          <div class="card-bottom">
+            <h5 class="color-white text-center pr-2 pb-2">
+              Chaussure <br />
+              Louboutin
+            </h5>
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+        <div class="d-flex px-3">
+          <div>
+            <h5 class="mb-n1">180 000 FCFA</h5>
+            <span class="opacity-60"
+              ><em><s>390 000 FCFA</s></em></span
+            >
+            <p class="mb-0">
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+            </p>
+            <p class="color-yellow1-dark mb-0 font-11">Stock limité</p>
+          </div>
+        </div>
+      </div>
+      <div class="item bg-theme pb-3 rounded-m shadow-l">
+        <div data-card-height="200" class="card mb-3 bg-11">
+          <div class="card-bottom">
+            <h5 class="color-white text-center pr-2 pb-2">
+              Sac <br />
+              GUCCI
+            </h5>
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+        <div class="d-flex px-3">
+          <div>
+            <h5 class="mb-n1">175 000 FCFA</h5>
+            <span class="opacity-60"
+              ><em><s>320 000 FCFA</s></em></span
+            >
+            <p class="mb-0">
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+              <i class="fa fa-star color-yellow1-dark"></i>
+            </p>
+            <p class="color-red2-dark mb-0 font-11">Vendu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider divider-margins mt-4"></div>
+
+    <div class="content mb-3">
+      <h5 class="font-16 font-500 mb-0">
+        <a href="sh-srv06-index.html">
+          <i class="fa fa-user-friends font-18 color-black"></i>
+          <span class="color-black">VIP Airport Service</span>
+        </a>
+      </h5>
+      <p class="float-left mb-0">Voyageur pressé ? Ce service est pour vous</p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="single-slider-boxed owl-carousel owl-no-dots">
+      <div data-card-height="300" class="card bg-12 rounded-m shadow-l">
+        <div class="card-bottom text-center mb-3">
+          <h2 class="color-white text-uppercase font-700 mb-0">
+            Meet & Greet VIP
+          </h2>
+          <p class="under-heading color-white">A partir de 150 000 FCFA</p>
+          <p class="under-heading color-white">
+            <span
+              class="badge bg-highlight color-white px-3 py-1 mt-n1 text-uppercase d-block"
+              >Découvrir</span
+            >
+          </p>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+      </div>
+      <div data-card-height="300" class="card bg-13 rounded-m shadow-l">
+        <div class="card-bottom text-center mb-3">
+          <h2 class="color-white text-uppercase font-700 mb-0">
+            VIP Airport Service
+          </h2>
+          <p class="under-heading color-white">A partir de 1 500 000 FCFA</p>
+          <p class="under-heading color-white">
+            <span
+              class="badge bg-highlight color-white px-3 py-1 mt-n1 text-uppercase d-block"
+              >Commander</span
+            >
+          </p>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+      </div>
+    </div>
+
+    <div class="divider divider-margins"></div>
+
+    <div class="content mb-3">
+      <h5 class="font-16 font-500 mb-0">
+        <a href="sh-srv06-index.html">
+          <i class="fa fa-plane-departure font-18 color-black"></i>
+          <span class="color-black">Vols </span>
+        </a>
+      </h5>
+      <p class="float-left mb-0">
+        Vols Aller-retour, Vols Aller simple, Vols en direct
+      </p>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="card card-style">
+      <div class="content">
+        <a href="sh-srv07-index.html">
+          <div class="show-on-theme-dark">
+            <div class="d-flex">
+              <div class="text-center">
+                <i class="fa-4x mr-3 fa fa fa-moon color-gray2-dark"></i>
+              </div>
+              <div>
+                <h4>Il fait beau en ce moment !</h4>
+                <p>Veuillez appuyer ici pour accéder aux Vols</p>
+              </div>
+            </div>
+          </div>
+          <div class="show-on-theme-light">
+            <div class="d-flex">
+              <div class="text-center">
+                <i class="fa-4x mr-3 fa fa fa-sun color-yellow1-dark"></i>
+              </div>
+              <div>
+                <h4>Il fait beau en ce moment !</h4>
+                <p>Veuillez appuyer ici pour accéder aux Vols</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- end of page content-->
+
+  <div
+    id="menu-confirm"
+    class="menu menu-box-bottom menu-box-detached rounded-m"
+    data-menu-height="200"
+    data-menu-effect="menu-over"
+  >
+    <h2 class="text-center font-700 mt-3 pt-1">Être notifié de l'évènement?</h2>
+    <p class="boxed-text-l mb-0">
+      Veuillez choisir une date de rappel de l'évènement
+    </p>
+    <div class="col-12 mb-n2 ml-4 mr-4">
+      <div class="input-style input-style-1 input-required">
+        <span>Selectionnez une date</span>
+        <em><i class="fa fa-angle-down"></i></em>
+        <input type="datetime-local" value="now" />
+      </div>
+    </div>
+    <div class="row mr-3 ml-3 mt-4">
+      <div class="col-6">
+        <a
+          href="#"
+          class="close-menu btn btn-xxs btn-full button-s shadow-l rounded-s text-uppercase font-700 bg-black text-white"
+          >Annuler</a
+        >
+      </div>
+      <div class="col-6">
+        <a
+          href="#"
+          class="close-menu btn btn-xxs btn-full button-s shadow-l rounded-s text-uppercase font-700 bg-blue2-dark"
+          >Enregistrer</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="sh-menu-main"
+    class="menu menu-box-right menu-box-detached rounded-m"
+    data-menu-width="260"
+    data-menu-load="sh-menu-main.html"
+    data-menu-active="nav-welcome"
+    data-menu-effect="menu-over"
+  ></div>
+
+  <!-- Be sure this is on your main visiting page, for example, the index.html page-->
+  <!-- Install Prompt for Android -->
+  <div
+    id="menu-install-pwa-android"
+    class="menu menu-box-bottom menu-box-detached rounded-l"
+    data-menu-height="350"
+    data-menu-effect="menu-parallax"
+  >
+    <div class="boxed-text-l mt-4">
+      <img
+        class="rounded-l mb-3"
+        src="assets/app/icons/icon-128x128.png"
+        alt="img"
+        width="90"
+      />
+      <h4 class="mt-3">Sherylux sur votre écran d'accueil</h4>
+      <p>
+        Installez Sherylux sur votre écran d'accueil et accédez-y. C'est aussi
+        simple que ça!
+      </p>
+      <a
+        href="#"
+        class="pwa-install btn btn-s rounded-s shadow-l text-uppercase font-700 bg-highlight mb-2"
+        >Ajouter à l'écran d'accueil</a
+      ><br />
+      <a
+        href="#"
+        class="pwa-dismiss close-menu color-gray2-light text-uppercase font-700 opacity-60 font-10"
+        >Peut-être plus tard</a
+      >
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <!-- Install instructions for iOS -->
+  <div
+    id="menu-install-pwa-ios"
+    class="menu menu-box-bottom menu-box-detached rounded-l"
+    data-menu-height="320"
+    data-menu-effect="menu-parallax"
+  >
+    <div class="boxed-text-xl mt-4">
+      <img
+        class="rounded-l mb-3"
+        src="assets/app/icons/icon-128x128.png"
+        alt="img"
+        width="90"
+      />
+      <h4 class="mt-3">Sherylux sur votre écran d'accueil</h4>
+      <p class="mb-0 pb-3">
+        Pour installer Sherylux sur votre écran d'accueil, <br />
+        ouvrez votre menu Safari et appuyez sur <br />
+        "Ajouter à l'écran d'accueil".
+      </p>
+      <div class="clear"></div>
+      <a
+        href="#"
+        class="pwa-dismiss close-menu color-highlight font-800 opacity-80 text-center text-uppercase"
+        >Peut-être plus tard</a
+      ><br />
+      <i class="fa-ios-arrow fa fa-caret-down font-40"></i>
+    </div>
+  </div>
+</div>

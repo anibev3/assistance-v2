@@ -1,0 +1,204 @@
+<div>
+  <!-- header and footer bar go here-->
+
+  <div class="page-content py-0 my-0">
+    <div class="page-title page-title-small">
+      <h2 class="font-12">
+        <span (click)="goTo('/map')"
+          ><i class="fa fa-arrow-left icon-back"></i></span
+        >Catégorie de véhicule
+      </h2>
+    </div>
+
+    <div class="card header-card" data-card-height="150">
+      <div class="card-overlay bg-black opacity-0"></div>
+      <div class="card-overlay dark-mode-tint"></div>
+      <div
+        class="card-bg preload-img"
+        data-src="assets/images/pictures/20s.jpg"
+      ></div>
+    </div>
+
+    <div
+      class="card card-style"
+      style="display: null; margin: 0px 0px 0px 0px; height: 100vh"
+    >
+      <div class="content">
+        <!-- selected-car.component.html -->
+
+        <div>
+          <span class="text-center">
+            <h4 class="mb-1">{{ selectedVehicle.name }}</h4>
+            <p class="font-12 m-0 p-0">
+              {{ selectedVehicle.supported_vehicles }}
+            </p>
+            <h6 class="mb-1" style="font-weight: 100">
+              {{ selectedVehicle.description }} Passagers -
+              {{ selectedVehicle.short_description }} Bagages
+            </h6>
+          </span>
+          <br />
+          <div class="divider mx-0 my-0"></div>
+
+          <a href="#">
+            <div class="content rounded-s shadow-xs my-1 mx-0 px-2 py-1">
+              <img
+                [src]="selectedVehicle.icon"
+                width="100%"
+                alt="Car Option 1"
+              />
+            </div>
+          </a>
+
+          <div class="divider divider-margins my-2"></div>
+
+          <a href="#" data-menu="sh-menu-cart-pop-item-edit">
+            <div
+              class="content border border-blue2-dark rounded-s shadow-xs my-1 mx-0 px-2 py-1"
+            >
+              <h1 class="mb-n2 font-14 font-700">
+                selectedVehicle.serviceName
+              </h1>
+              <h1 class="float-right font-700 font-12 mt-n3 mb-0">
+                {{
+                  selectedVehicle.total.toLocaleString("fr-FR", {
+                    maximumFractionDigits: 0
+                  })
+                }}
+                <sup>FCFA</sup>
+              </h1>
+              <p
+                class="mb-0 font-10"
+                *ngFor="let feature of selectedVehicle.features"
+              >
+                <i class="fa fa-check-circle color-highlight mr-2"></i> feature
+              </p>
+              <p class="mb-n1 font-10">selectedVehicle.details</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- <div class="divider my-2"></div>
+        <h5>Réduction Fidelux</h5>
+
+        <div class="input-style input-style-2 input-required">
+          <span class="color-highlight">Numéro de carte Fidelux</span>
+          <em> </em>
+          <input class="form-control" type="text" placeholder="SH_FDL_131676" />
+        </div> -->
+
+        <div class="divider divider-margins py-1 my-2"></div>
+
+        <div class="divider my-2"></div>
+
+        <div
+          class="double-slider owl-carousel mb-4 bottom-0 owl-dots.disabled"
+          style="
+            display: flex;
+            flex-direction: column;
+            /* height: 100vh; */
+            justify-content: flex-end;
+          "
+        >
+          <div
+            *ngFor="let vehicle of vehicleList; let i = index"
+            class="item"
+            style="width: 128px"
+            [ngClass]="{
+              'border border-blue2-dark rounded-s': vehicle === selectedVehicle
+            }"
+            (click)="selectVehicle(vehicle)"
+          >
+            <div
+              data-card-height="150"
+              class="card bg-4 rounded-m shadow-l mb-0"
+              style="
+                /* border: 1px solid black !important; */
+                border-radius: 5px !important;
+                background-image: url(assets/images/pictures/4.jpg);
+              "
+            >
+              <div class="card-bottom text-center" style="margin-bottom: 7px">
+                <h6 class="color-white text-uppercase font-600">
+                  {{ vehicle.name }}
+                </h6>
+                <a
+                  href="#"
+                  class="btn btn-xs btn-center-xs badge bg-highlight color-white text-uppercase"
+                >
+                  {{
+                    vehicle.total.toLocaleString("fr-FR", {
+                      maximumFractionDigits: 0
+                    })
+                  }}
+                  Fcfa
+                </a>
+              </div>
+              <div
+                class="card-overlay"
+                style="
+                  border-radius: 5px;
+                  background: linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0) 20%,
+                    rgba(0, 0, 0, 0.1) 30%,
+                    rgba(0, 0, 0, 0.8) 99%,
+                    #000 100%
+                  );
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        href="#"
+        (click)="goTo('/info-passager-n')"
+        class="btn btn-full btn-m rounded-sm bg-highlight font-800 text-uppercase bottom-0"
+      >
+        Continuez
+      </button>
+    </div>
+  </div>
+  <!-- end of page content-->
+
+  <!-- <div
+    id="sh-menu-cart-pop-item-edit"
+    data-menu-load="#"
+    class="menu menu-box-bottom menu-box-detached rounded-m"
+    data-menu-height="455"
+    data-menu-effect="menu-over"
+  ></div> -->
+
+  <!-- <div
+    id="sh-menu-success-2"
+    class="menu menu-box-bottom menu-box-detached bg-blue2-dark rounded-m"
+    data-menu-height="305"
+    data-menu-effect="menu-over"
+  >
+    <h3 class="text-center mt-4">
+      <i
+        class="fa fa-3x fa-check-circle color-white shadow-xl rounded-circle"
+      ></i>
+    </h3>
+    <h5 class="text-center mt-3 text-uppercase font-700 color-white">
+      Paiement effectué avec succès
+    </h5>
+    <p class="my-0 boxed-text-l color-white opacity-70">
+      Vous recevrez par email les détails de votre paiement et la confirmation
+      de votre réservation
+    </p>
+    <p class="my-0 boxed-text-l color-white opacity-70">
+      Merci de votre confiance
+    </p>
+    <a href="sh-reservation.html" class="my-2 btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-white">Terminer</a>
+    <a
+      href="#"
+      class="my-2 btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-white"
+      >Terminer</a
+    >
+  </div> -->
+</div>
+
+<!-- <div class="divider divider-margins"></div> -->
