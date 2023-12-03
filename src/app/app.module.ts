@@ -26,6 +26,9 @@ import {
 } from '@angular/platform-browser/animations';
 import { ResumComponent } from './view/transport/resum/resum.component';
 import { PaiementComponent } from './view/transport/paiement/paiement.component';
+import { SuccessComponent } from './view/transport/success/success.component';
+import { FailureComponent } from './view/transport/failure/failure.component';
+import { HistoriqueComponent } from './view/historique/historique.component';
 
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
@@ -47,6 +50,9 @@ import { PaiementComponent } from './view/transport/paiement/paiement.component'
     ReplacePipe,
     ResumComponent,
     PaiementComponent,
+    SuccessComponent,
+    FailureComponent,
+    HistoriqueComponent,
     // TestComponent,
   ],
   imports: [

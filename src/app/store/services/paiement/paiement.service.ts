@@ -11,17 +11,16 @@ export class PaiementService {
   // private authToken = 'votre_token';
   constructor(private http: HttpClient) {}
 
-  login(loginInfo: LoginInfo): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    // .set('Authorization', `Bearer ${this.authToken}`);
+  initiatePayment(cart: any[]): Observable<any> {
+    const form_data = {
+      customer_email: 'assistancev2@email.com',
+      success_url: 'http://localhost:4200/success',
+      cancel_url: 'http://localhost:4200/failure',
+      cart: cart,
+    };
 
-    return this.http.post<any>(
-      `${this.baseUrl}/api/auth/login`,
-      {
-        email: loginInfo.email,
-        password: loginInfo.password,
-      },
-      { headers: headers }
-    );
+    console.log('======> la formData de stripe: ', form_data);
+
+    return this.http.post<any>(`${this.baseUrl}/api/sendtopay`, form_data);
   }
 }

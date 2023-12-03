@@ -1,0 +1,678 @@
+<div>
+  <div class="page-content py-0 mt-0 mb-4">
+    <div class="page-title page-title-small">
+      <h2 class="font-12">RÉSERVATIONS</h2>
+      <a
+        href="#"
+        data-menu="sh-menu-main"
+        class="bg-fade-gray1-dark shadow-xl preload-img"
+        data-src="images/avatars/5s.png"
+      ></a>
+      <h6 class="font-12 color-white">Vos réservations et factures</h6>
+    </div>
+
+    <div class="card header-card" data-card-height="150">
+      <div class="card-overlay bg-black opacity-95"></div>
+      <div class="card-overlay dark-mode-tint"></div>
+      <div class="card-bg preload-img" data-src="images/pictures/20s.jpg"></div>
+    </div>
+    <div style="margin-top: 20px"></div>
+    <!-- @if (empty($history)) -->
+    <!-- <div class="flex-column">
+      <img
+        src="https://www.pngmart.com/files/13/Vector-Flying-Airplane-PNG-Transparent-Picture.png"
+        alt=""
+      />
+      <div class="text-center">
+        <p class="text-14-medium color-text">
+          Vous n'avez <br />aucune réservation
+        </p>
+      </div>
+      {{--
+      <button type="button" class="btn btn-outline-dark mt-15 w-100">
+        Réserver une prestation
+      </button>
+      --}}
+    </div> -->
+    <!-- @else @foreach ($history as $reservation) -->
+    <div class="card card-style">
+      <div class="content">
+        <div class="align-self-center text-center mr-2">
+          <h4
+            class="color-black rounded-sm shadow-l font-17 font-400 p-1 px-2 mt-0 mb-3"
+          >
+            <strong>N°</strong>
+            <!-- {{ $reservation["identifier"] }} -->
+          </h4>
+        </div>
+        <div class="d-flex">
+          <div>
+            <h6 class="align-self-center mb-n2 mt-0">
+              <!-- {{ $reservation["type"]["name"] }} -->
+            </h6>
+            <span
+              class="color-theme opacity-30 d-block mb-0 font-11"
+              style="margin-top: 5px"
+              >Passagers :
+              <!-- {{ $reservation["number_of_passengers"] }} -->
+            </span>
+            <span class="color-theme opacity-30 d-block mb-0 font-11"
+              >Bagages :
+              <!-- {{ $reservation["number_of_bags"] }} -->
+            </span>
+          </div>
+          <div class="align-self-center ml-auto">
+            <h6 class="text-right mb-n1 mt-n2">
+              <!-- {{ number_format($reservation["amount"], 0, ".", " ") }}  -->
+              FCFA
+            </h6>
+            <span class="color-highlight d-block mt-n2 font-10 text-right">
+              <!-- {{
+              date("d F Y, H:i", strtotime($reservation["service_at"]))
+            }} -->
+            </span>
+            <!-- @if ($reservation['state'] === 'confirmed') -->
+            <span class="color-highlight d-block mt-n2 font-10 text-right"
+              >Confirmé</span
+            >
+            <!-- @endif @if ($reservation['state'] === 'cancelled') -->
+            <span class="d-block mt-n2 font-10 text-right" style="color: red"
+              >Annulée</span
+            >
+            <!-- @endif -->
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <a
+          class="btn btn-full btn-l rounded-sm shadow-xl font-800 text-uppercase bg-highlight"
+          >Réservez à nouveau</a
+        >
+      </div>
+    </div>
+    <!-- @endforeach @endif -->
+    <div style="margin-bottom: 50px"></div>
+  </div>
+</div>
+
+<div class="theme-light" data-highlight="blue2">
+  <div id="preloader">
+    <div class="spinner-border color-highlight" role="status"></div>
+  </div>
+
+  <div id="page">
+    <!-- header and footer bar go here-->
+    <div class="header header-fixed header-auto-show header-logo-center">
+      <a href="#" class="header-icon header-icon-1" data-back-button>
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <a href="#" class="header-icon header-icon-2" data-back-button>
+        Retour
+      </a>
+      <a href="sh-index.html" class="header-logo"></a>
+      <a
+        href="#"
+        class="header-icon header-icon-4"
+        data-menu="sh-menu-cart-pop-item-list"
+      >
+        <i class="fa fa-shopping-bag font-14"></i>
+        <span class="badge bg-blue2-dark">2</span>
+      </a>
+    </div>
+
+    <div class="page-content py-0 my-0">
+      <div class="page-title page-title-small">
+        <h2 class="font-12">
+          <a href="#" data-back-button><i class="fa fa-arrow-left"></i></a>VENTE
+          PRIVÉE
+        </h2>
+        <a
+          href="#"
+          data-menu="sh-menu-cart-pop-item-list"
+          class="icon icon-s rounded-l shadow-xl bg-highlight color-white float-right"
+        >
+          <i class="fa fa-shopping-bag"></i>
+        </a>
+      </div>
+
+      <div class="card header-card" data-card-height="150">
+        <div class="card-overlay bg-black opacity-60"></div>
+        <div class="card-overlay dark-mode-tint"></div>
+        <div
+          class="card-bg preload-img"
+          data-src="images/pictures/50.jpg"
+        ></div>
+      </div>
+
+      <div class="content">
+        <div class="search-box bg-theme rounded-m shadow-xl bottom-0">
+          <i class="fa fa-search"></i>
+          <input
+            type="text"
+            class="border-0"
+            placeholder="Rechercher une marque, un article..."
+            data-search
+          />
+        </div>
+        <div
+          class="search-results disabled-search-list card card-style mx-0 mt-3 px-2"
+        >
+          <div class="list-group list-custom-large">
+            <a
+              href="#"
+              data-filter-item
+              data-filter-name="filtre demo pour la marque"
+            >
+              <i class="fa fa-shopping-bag color-gray2-dark"></i>
+              <span>GUCCI</span>
+              <strong>Sacs, Chaussures, Coffrets, Parfums, ...</strong>
+              <i class="fa fa-angle-right mr-2"></i>
+            </a>
+            <a
+              href="#"
+              data-filter-item
+              data-filter-name="filtre demo pour la marque"
+            >
+              <i class="fa fa-shopping-bag color-gray2-dark"></i>
+              <span>LACOSTE</span>
+              <strong>Sacs, Chaussures, Coffrets, Parfums, ...</strong>
+              <i class="fa fa-angle-right mr-2"></i>
+            </a>
+            <a
+              href="#"
+              data-filter-item
+              data-filter-name="filtre demo pour la marque"
+            >
+              <i class="fa fa-shopping-bag color-gray2-dark"></i>
+              <span>TOMMY HILFIGER</span>
+              <strong>Sacs, Chaussures, Coffrets, Parfums, ...</strong>
+              <i class="fa fa-angle-right mr-2"></i>
+            </a>
+            <a
+              href="#"
+              data-filter-item
+              data-filter-name="filtre demo pour la marque"
+            >
+              <i class="fa fa-shopping-bag color-gray2-dark"></i>
+              <span>LANCEL</span>
+              <strong>Sacs, Chaussures, Coffrets, Parfums, ...</strong>
+              <i class="fa fa-angle-right mr-2"></i>
+            </a>
+            <a
+              href="#"
+              data-filter-item
+              data-filter-name="filtre demo pour la marque"
+            >
+              <i class="fa fa-shopping-bag color-gray2-dark"></i>
+              <span>POLO</span>
+              <strong>Sacs, Chaussures, Coffrets, Parfums, ...</strong>
+              <i class="fa fa-angle-right mr-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-style bg-theme pb-0">
+        <div class="content">
+          <div
+            class="tab-controls tabs-round tab-animated tabs-small tabs-rounded shadow-xl"
+            data-tab-items="4"
+            data-tab-active="bg-highlight activated color-white"
+          >
+            <a href="#" data-tab-active data-tab="tab-1">En cours</a>
+            <a href="#" data-tab="tab-2">Occasion</a>
+            <a href="#" data-tab="tab-3">Hommes</a>
+            <a href="#" data-tab="tab-4">Femmes</a>
+          </div>
+          <div class="clearfix mb-3"></div>
+          <div class="tab-content" id="tab-1">
+            <div class="content mx-0 my-0 mb-3">
+              <h5 class="font-16 font-500 mb-0">
+                <span class="color-black">Exclusivités sur Sherylux Privé</span>
+              </h5>
+              <p class="float-left mb-0">Retrouvez vos marques préférées</p>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="double-slider owl-carousel owl-no-dots">
+              <div class="item rounded-m">
+                <div data-card-height="180" class="card bg-15">
+                  <div class="card-bottom">
+                    <a href="sh-srv05-product-list.html">
+                      <h6 class="color-white text-center shadow-l pr-2 pb-2">
+                        Yves Saint Laurent
+                      </h6>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="item rounded-m">
+                <div data-card-height="180" class="card bg-16">
+                  <div class="card-bottom">
+                    <h6 class="color-white text-center shadow-l pr-2 pb-2">
+                      GUCCI
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="item rounded-m">
+                <div data-card-height="180" class="card bg-17">
+                  <div class="card-bottom">
+                    <h6 class="color-white text-center shadow-l pr-2 pb-2">
+                      HERMÈS
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content mx-0 my-0 mb-3">
+              <h5 class="font-16 font-500 mb-0">
+                <span class="color-black">Nouveautés</span>
+              </h5>
+              <p class="float-left mb-0">
+                Sacs, Bracelets, Montres, Chaussures, Parfums ...
+              </p>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="row mx-1">
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-18">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      C. Louboutin
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-19">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Bexley
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-21">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Lancel
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-0">
+                <div data-card-height="100" class="card mb-0 bg-22">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Choppard
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mx-1">
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-23">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Bracelets
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-25">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Parfums
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-26">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Tee-shirt
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-0">
+                <div data-card-height="100" class="card mb-0 bg-9">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Montres
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content mx-0 my-0 mb-3">
+              <h5 class="font-16 font-500 mb-0">
+                <span class="color-black">Luxe seconde main</span>
+              </h5>
+              <p class="float-left mb-0">
+                Découvrez nos modèles iconiques et certifiés
+              </p>
+              <div class="clearfix"></div>
+            </div>
+
+            <div data-card-height="150" class="card bg-10 rounded-m shadow-l">
+              <div class="card-bottom text-center mb-3">
+                <h2 class="color-white text-uppercase font-700 mb-0">
+                  L'occasion du luxe
+                </h2>
+              </div>
+            </div>
+
+            <div class="content mx-0 my-0 mb-3">
+              <h5 class="font-16 font-500 mb-0">
+                <span class="color-black">Dernière chance</span>
+              </h5>
+              <p class="float-left mb-0">
+                Sacs, Bracelets, Montres, Chaussures, Parfums ...
+              </p>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="row mx-1">
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-30">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      LACOSTE
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-28">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      EMLING
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-30">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      MICHAEL KORS
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-0">
+                <div data-card-height="100" class="card mb-0 bg-28">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      MAROQUINERIE ITALIENNE
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mx-1">
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-27">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      C. LOUBOUTIN
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-28">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      BERLUTTI
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-27">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      LOUIS-VUITTON
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-0">
+                <div data-card-height="100" class="card mb-0 bg-28">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      LANCEL
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-gradient"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content mx-0 my-0 mb-3">
+              <h5 class="font-16 font-500 mb-0">
+                <span class="color-black">Nos prochaines ventes</span>
+              </h5>
+              <p class="float-left mb-0">A partir du 01 Avril 2023 à 09h00</p>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="row mx-1">
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-18">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      C. Louboutin
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-19">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Bexley
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-21">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Lancel
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-0">
+                <div data-card-height="100" class="card mb-0 bg-22">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Choppard
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mx-1">
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-23">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Bracelets
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-25">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Parfums
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-1">
+                <div data-card-height="100" class="card mb-0 bg-26">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Tee-shirt
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+              <div class="col-3 pl-0 pr-0">
+                <div data-card-height="100" class="card mb-0 bg-9">
+                  <div class="card-bottom">
+                    <h5
+                      class="color-white text-center font-200 font-10 pr-2 pb-2"
+                    >
+                      Montres
+                    </h5>
+                  </div>
+                  <div class="card-overlay bg-black opacity-80"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-2">
+            <p class="bottom-0">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
+            </p>
+          </div>
+          <div class="tab-content" id="tab-3">
+            <p class="bottom-0">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
+            </p>
+          </div>
+          <div class="tab-content" id="tab-4">
+            <p class="bottom-0">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of page content-->
+
+    <div
+      id="sh-menu-cart-pop-item-list"
+      data-menu-load="sh-menu-cart-pop-item-list.html"
+      class="menu menu-box-bottom menu-box-detached rounded-m"
+      data-menu-height="455"
+      data-menu-effect="menu-over"
+    ></div>
+
+    <div
+      id="sh-menu-cart-pop-item-edit"
+      data-menu-load="sh-menu-cart-pop-item-edit.html"
+      class="menu menu-box-bottom menu-box-detached rounded-m"
+      data-menu-height="455"
+      data-menu-effect="menu-over"
+    ></div>
+
+    <div
+      id="sh-alert-added-to-cart"
+      class="snackbar-toast bg-green1-dark color-white"
+      data-delay="3000"
+      data-autohide="true"
+    >
+      <i class="fa fa-shopping-cart mr-3"></i>Ajouté avec succès au panier de
+      réservations
+    </div>
+  </div>
+</div>

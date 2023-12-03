@@ -12,6 +12,9 @@ import { InfoPassager2Component } from './view/transport/info-passager2/info-pas
 import { TestComponent } from './view/test/test/test.component';
 import { ResumComponent } from './view/transport/resum/resum.component';
 import { PaiementComponent } from './view/transport/paiement/paiement.component';
+import { SuccessComponent } from './view/transport/success/success.component';
+import { FailureComponent } from './view/transport/failure/failure.component';
+import { HistoriqueComponent } from './view/historique/historique.component';
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
 
 const routes: Routes = [
@@ -50,6 +53,21 @@ const routes: Routes = [
   {
     path: 'paiement',
     component: PaiementComponent,
+  },
+
+  {
+    path: 'success',
+    component: SuccessComponent,
+  },
+
+  {
+    path: 'failure',
+    component: FailureComponent,
+  },
+
+  {
+    path: 'historique',
+    component: HistoriqueComponent,
   },
   // {
   //   path: 'paiement-reservation',
