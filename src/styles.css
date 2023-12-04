@@ -1,3 +1,6 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
 .icon-back {
   font-size: large;
   margin-right: 12px;
@@ -61,4 +64,37 @@
 
 .margin0 {
   margin: 0px 0px 0px 0px;
+}
+
+.colorRed {
+  color: red;
+}
+
+.colorGreen {
+  color: green;
+}
+.scrollableDiv300 {
+  max-height: 300px; /* Ajustez la hauteur maximale selon vos besoins */
+  overflow-y: auto; /* Ajoute une barre de défilement vertical si nécessaire */
+}
+
+.resTermine {
+  border: solid 1px green;
+  border-radius: 5px;
+  margin: 40px;
+  padding: 2px;
+}
+
+.resAnnule {
+  border: solid 1px red;
+  border-radius: 5px;
+  margin: 40px;
+  padding: 2px;
+}
+
+.resaVenir {
+  border: solid 1px black;
+  border-radius: 5px;
+  margin: 40px;
+  padding: 2px;
 }

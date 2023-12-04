@@ -10,7 +10,7 @@ import { AuthService } from '../../auth.service';
 })
 export class ApiService {
   private apiUrl = 'chemin-vers-votre-api';
-  private baseUrl = 'https://ci.airportvip.sherylux.com';
+  private assistanceBaseUrl = 'https://ci.airportvip.sherylux.com';
   private transportBaseUrl = 'https://blackcarxx.sherylux.com/api/v1';
 
   constructor(
@@ -38,5 +38,32 @@ export class ApiService {
     return this.http.get<any>(`${this.transportBaseUrl}/request/history`, {
       headers: headers,
     });
+  }
+
+  getAssistanceHistory(): Observable<any> {
+    const authToken = this.authService.getToken(); // Obtenez le token à partir du service d'authentification
+
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${authToken}`);
+
+    return this.http.get<any>(`${this.assistanceBaseUrl}/api/v1/reservations`, {
+      headers: headers,
+    });
+  }
+
+  getAssistanceDetail(id: string): Observable<any> {
+    const authToken = this.authService.getToken(); // Obtenez le token à partir du service d'authentification
+
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${authToken}`);
+
+    return this.http.get<any>(
+      `${this.assistanceBaseUrl}/api/v1/reservations/${id}`,
+      {
+        headers: headers,
+      }
+    );
   }
 }

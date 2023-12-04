@@ -66,7 +66,7 @@ export class MapDisplayComponent implements OnInit {
 
   markerPositions: google.maps.LatLng[] = [];
   private isMapInitialized = false;
-  zoom = 5;
+  zoom = 3;
 
   directionsResult$ = new BehaviorSubject<
     google.maps.DirectionsResult | undefined

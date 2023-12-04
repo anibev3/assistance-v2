@@ -29,6 +29,12 @@ import { PaiementComponent } from './view/transport/paiement/paiement.component'
 import { SuccessComponent } from './view/transport/success/success.component';
 import { FailureComponent } from './view/transport/failure/failure.component';
 import { HistoriqueComponent } from './view/historique/historique.component';
+import { TabViewModule } from 'primeng/tabview';
+import { PaginatorModule } from 'primeng/paginator';
+import { CustomDatePipe } from './store/helpers/date.pipe';
+import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
+import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
+import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
 
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
@@ -53,7 +59,10 @@ import { HistoriqueComponent } from './view/historique/historique.component';
     SuccessComponent,
     FailureComponent,
     HistoriqueComponent,
-    // TestComponent,
+    CustomDatePipe,
+    DetailResComponent,
+    TpDetailResComponent,
+    HomeAssistanceComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +73,8 @@ import { HistoriqueComponent } from './view/historique/historique.component';
     IgxCarouselModule,
     IgxListModule,
     BrowserAnimationsModule,
-    // NoopAnimationsModule,
+    TabViewModule,
+    PaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

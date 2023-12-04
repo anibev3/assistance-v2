@@ -1266,17 +1266,12 @@ $(document).ready(function () {
     ).on("focusin keyup", function () {
       var spanValue = $(this).parent().find("span").text();
       if ($(this).val() != spanValue && $(this).val() != "") {
-        $(this)
-          .parent()
-          .find("span")
-          .addClass("input-style-1-active")
-          .removeClass("input-style-1-inactive");
+        $(this).parent().find("span").addClass("input-style-1-active");
+        // .removeClass("input-style-1-inactive");
       }
       if ($(this).val() === "") {
-        $(this)
-          .parent()
-          .find("span")
-          .removeClass("input-style-1-inactive input-style-1-active");
+        $(this).parent().find("span");
+        // .removeClass("input-style-1-inactive input-style-1-active");
       }
     });
     $(
@@ -1284,21 +1279,17 @@ $(document).ready(function () {
     ).on("focusout", function () {
       var spanValue = $(this).parent().find("span").text();
       if ($(this).val() === "") {
-        $(this)
-          .parent()
-          .find("span")
-          .removeClass("input-style-1-inactive input-style-1-active");
+        $(this).parent().find("span");
+        // .removeClass("input-style-1-inactive input-style-1-active");
       }
-      $(this).parent().find("span").addClass("input-style-1-inactive");
+      // $(this).parent().find("span").addClass("input-style-1-inactive");
     });
     $(".input-required select").on("focusout", function () {
       var getValue = $(this)[0].value;
       if (getValue === "default") {
         $(this).parent().find("em").html(invalidIcon);
-        $(this)
-          .parent()
-          .find("span")
-          .removeClass("input-style-1-inactive input-style-1-active");
+        $(this).parent().find("span");
+        // .removeClass("input-style-1-inactive input-style-1-active");
       }
       if (getValue != "default") {
         $(this).parent().find("em").html(validIcon);

@@ -1,0 +1,304 @@
+<div class="page-content py-0 my-0">
+  <div class="page-title page-title-small">
+    <h2 class="font-12">
+      <a routerLink="/historique" data-back-button
+        ><i class="fa fa-arrow-left"></i></a
+      >Réservation - Facture
+    </h2>
+  </div>
+
+  <div class="card header-card" data-card-height="150">
+    <div class="card-overlay bg-black opacity-0"></div>
+    <div class="card-overlay dark-mode-tint"></div>
+    <div
+      class="card-bg preload-img"
+      data-src="assets/images/pictures/20s.jpg"
+    ></div>
+  </div>
+
+  <div *ngIf="!loading">
+    <div class="card card-style" style="margin: 0px 16px 9px 16px">
+      <div class="content">
+        <div class="d-flex">
+          <div>
+            <h4>VIP Airport Service</h4>
+            <p class="font-600 color-highlight mt-n2">
+              {{ reservation.service.reservation_type_name }}
+            </p>
+          </div>
+          <div class="ml-auto">
+            <img src="assets/images/preload-logo.png" width="40" />
+          </div>
+        </div>
+        <div class="divider mt-3 mb-3"></div>
+        <div class="row mb-0">
+          <div class="col-4">
+            <p class="color-theme font-700">N° facture</p>
+          </div>
+          <div class="col-8">
+            <p class="font-400 color-highlight font-600 text-right">
+              {{ reservation.identifier }}
+            </p>
+          </div>
+          <div class="col-4">
+            <p class="color-theme font-700">Date</p>
+          </div>
+          <div class="col-8">
+            <p class="font-400 text-right">
+              {{ reservation.service.created_at | customDate }}
+            </p>
+          </div>
+          <!-- <button
+            class="btn btn-full bg-highlight btn-sm text-uppercase font-900 rounded-s shadow-xl w-100"
+          >
+            Télécharger la facture
+          </button> -->
+          <!-- {{-- <div class="col-6">
+                      <p class="color-theme font-700">Numéro de commande</p>
+                  </div>
+                  <div class="col-6">
+                      <p class="font-400">N° {{ reservation.identifier'] }}</p>
+                  </div> --}} -->
+        </div>
+        <!-- <button
+          class="btn btn-full bg-highlight btn-sm text-uppercase font-900 rounded-s shadow-xl w-100"
+        >
+          Télécharger la facture
+        </button> -->
+      </div>
+      <button
+        class="btn btn-full bg-highlight btn-sm text-uppercase font-900 rounded-s shadow-xl w-100"
+      >
+        Télécharger la facture
+      </button>
+    </div>
+    <div class="card card-style" style="margin: 0px 16px 9px 16px">
+      <div class="content">
+        <h5>Informations supplémentaire</h5>
+        <div class="row mb-0">
+          <div class="col-5">
+            <p class="color-theme font-700">Numéro de vol</p>
+          </div>
+          <div class="col-7">
+            <!-- <p class="font-400">{{ reservation.flight_number }} </p> -->
+          </div>
+
+          <div class="col-5">
+            <p class="color-theme font-700">Classe</p>
+          </div>
+          <div class="col-7">
+            <!-- <p class="font-400">{{ reservation.flight_class'] }}</p> -->
+          </div>
+
+          <div class="col-5">
+            <p class="color-theme font-700">Téléphone mobile</p>
+          </div>
+          <div class="col-7">
+            <!-- <p class="font-400">+225 {{ reservation.contact'] }}</p> -->
+          </div>
+          <div class="col-4">
+            <p class="font-400">Panneau</p>
+          </div>
+          <div class="col-8">
+            <!-- <p class="font-400">{{ reservation.welcome_panel'] }}</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-style" style="margin: 0px 16px 9px 16px">
+      <div class="content">
+        <h5 style="margin-bottom: 5px">Aéroport</h5>
+        <div class="row mb-0">
+          <div class="col-5">
+            <p class="color-theme font-700">Aérp de départ</p>
+          </div>
+          <div class="col-7">
+            <!-- <p class="font-400">{{ reservation.departure_airport']['name'] }}</p> -->
+          </div>
+
+          <div class="col-5">
+            <p class="color-theme font-700">Pays</p>
+          </div>
+          <div class="col-7">
+            <p class="font-400"></p>
+          </div>
+
+          <div class="col-5">
+            <p class="color-theme font-700">Ville</p>
+          </div>
+          <div class="col-7">
+            <!-- <p class="font-400">{{ reservation.departure_airport']['city'] }}</p> -->
+          </div>
+
+          <!--  @if (reservation.arrival_aiport'] !== null)
+                      <div class="col-5">
+                          <p class="color-theme font-700">Aéroport d'arrivée</p>
+                      </div>
+                      <div class="col-7">
+                          <p class="font-400">{{ reservation.arrival_aiport']['name'] }}</<< /p>
+                      </div>
+
+                      <div class="col-5">
+                          <p class="color-theme font-700">Pays</p>
+                      </div>
+                      <div class="col-7">
+                          <p class="font-400">{{ reservation.arrival_aiport']['country'] }}</p>
+                      </div>
+
+                      <div class="col-5">
+                          <p class="color-theme font-700">Ville</p>
+                      </div>
+                      <div class="col-7">
+                          <p class="font-400">{{ reservation.arrival_aiport']['city'] }}</p>
+                      </div>
+                 @else
+                      <div class="col-5">
+                          <p class="color-theme font-700">Aéroport d'arrivée</p>
+                      </div>
+                      <div class="col-7">
+                          <p class="font-400">{{ reservation.transit_airport']['name'] }}</<< /p>
+                      </div>
+
+                      <div class="col-5">
+                          <p class="color-theme font-700">Pays</p>
+                      </div>
+                      <div class="col-7">
+                          <p class="font-400">{{ reservation.transit_airport']['country'] }}</p>
+                      </div>
+
+                      <div class="col-5">
+                          <p class="color-theme font-700">Ville</p>
+                      </div>
+                      <div class="col-7">
+                          <p class="font-400">{{ reservation.transit_airport']['city'] }}</p>
+                      </div>
+                  @endif -->
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-style" style="margin: 0px 16px 9px 16px">
+      <div class="content">
+        <h4>Détails de la réservation</h4>
+        <div class="row">
+          <div class="col-6">
+            <p class="color-theme font-15 font-800">Service</p>
+          </div>
+          <div class="col-2">
+            <p class="color-theme font-15 font-800 text-center">Qté</p>
+          </div>
+          <div class="col-4">
+            <p class="color-theme font-15 font-800 text-right">Montant</p>
+          </div>
+
+          <div class="col-12 mb-2 mt-2"></div>
+
+          <div class="col-6">
+            <p class="line-height-s">
+              {{ reservation.service.reservation_type_name }}
+            </p>
+          </div>
+          <div class="col-2">
+            <p class="line-height-s text-center">1</p>
+          </div>
+          <div class="col-4">
+            <p class="line-height-s text-right">
+              {{
+                reservation.service.default_price.toLocaleString("fr-FR", {
+                  maximumFractionDigits: 0
+                }) + " FCFA"
+              }}
+            </p>
+          </div>
+
+          <!-- <div class="col-12"></div> -->
+          <div *ngFor="let item of reservation.airport_options">
+            <div class="col-6">
+              <p class="line-height-s">{{ item.option_name }}</p>
+            </div>
+            <div class="col-2">
+              <p class="line-height-s text-center">1</p>
+            </div>
+            <div class="col-4">
+              <p class="line-height-s text-right">
+                {{
+                  item.amount.toLocaleString("fr-FR", {
+                    maximumFractionDigits: 0
+                  })
+                }}
+                FCFA
+              </p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="divider mt-4"></div>
+          </div>
+
+          <div class="col-6">
+            <p class="font-800 font-15 color-theme">Montant Total</p>
+          </div>
+          <div class="col-6">
+            <p class="font-400 font-15 color-theme text-right">
+              {{
+                reservation.amount.toLocaleString("fr-FR", {
+                  maximumFractionDigits: 0
+                })
+              }}
+              FCFA
+            </p>
+          </div>
+
+          <div class="col-6">
+            <p class="font-800 font-15 color-theme">Montant Total TVA</p>
+          </div>
+          <div class="col-6">
+            <p class="font-400 font-15 color-theme text-right">
+              {{
+                reservation.amount_with_tva.toLocaleString("fr-FR", {
+                  maximumFractionDigits: 0
+                })
+              }}
+              FCFA
+            </p>
+          </div>
+
+          <div class="col-6">
+            <p class="font-800 font-15 color-theme">Mode de règlement</p>
+          </div>
+          <div class="col-6">
+            <p class="font-00 font-15 color-theme text-right">
+              Carte de crédit
+            </p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <button
+          class="btn btn-full bg-highlight btn-sm text-uppercase font-900 rounded-s shadow-xl w-100"
+        >
+          Réserver à nouveau
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <div class="align-self-center align-item-center">
+    <p>Chargement en cours...</p>
+  </div>
+  <!-- <div id="preloader">
+    <div class="spinner-border color-highlight" role="status"></div>
+  </div> -->
+</div>
+
+<!-- <div class="page-content py-0 my-0">
+  <div class="card header-card" data-card-height="150">
+    <div class="card-overlay bg-black opacity-0"></div>
+    <div class="card-overlay dark-mode-tint"></div>
+    <div class="card-bg preload-img" data-src="images/pictures/20s.jpg"></div>
+  </div>
+</div> -->

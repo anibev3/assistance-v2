@@ -15,6 +15,10 @@ import { PaiementComponent } from './view/transport/paiement/paiement.component'
 import { SuccessComponent } from './view/transport/success/success.component';
 import { FailureComponent } from './view/transport/failure/failure.component';
 import { HistoriqueComponent } from './view/historique/historique.component';
+import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
+import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
+import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
+// import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
 
 const routes: Routes = [
@@ -69,6 +73,9 @@ const routes: Routes = [
     path: 'historique',
     component: HistoriqueComponent,
   },
+  { path: 'assist-res-detail', component: DetailResComponent },
+  { path: 'transp-res-detail', component: TpDetailResComponent },
+  { path: 'assistance', component: HomeAssistanceComponent },
   // {
   //   path: 'paiement-reservation',
   //   component: PaiementReservationComponent,
