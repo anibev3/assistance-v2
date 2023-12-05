@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../store/services/data/api.service';
-import { LocalStorageService } from '../../../store/services/session/local-storage.service';
+// import { ApiService } from '../../../store/services/data/api.service';
+// import { LocalStorageService } from '../../../store/services/session/local-storage.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { NavigationService } from '../../../store/helpers/navigation.service';
+import { ApiService } from '../../../../store/services/data/api.service';
+import { LocalStorageService } from '../../../../store/services/session/local-storage.service';
+import { NavigationService } from '../../../../store/helpers/navigation.service';
+// import { NavigationService } from '../../../store/helpers/navigation.service';
 
 @Component({
   selector: 'app-success',

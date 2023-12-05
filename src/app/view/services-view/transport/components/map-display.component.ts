@@ -7,7 +7,7 @@ import {
 } from '@angular/google-maps';
 import { PlaceSearchResult } from './place-autocomplete.component';
 import { BehaviorSubject, map } from 'rxjs';
-import { LocalStorageService } from '../../../store/services/session/local-storage.service';
+import { LocalStorageService } from '../../../../store/services/session/local-storage.service';
 
 @Component({
   selector: 'app-map-display',

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavigationService } from '../../../store/helpers/navigation.service';
+import { NavigationService } from '../../../../store/helpers/navigation.service';
+// import { NavigationService } from '../../../store/helpers/navigation.service';
 
 @Component({
   selector: 'app-resum',

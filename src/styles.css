@@ -98,3 +98,9 @@
   margin: 40px;
   padding: 2px;
 }
+
+/* .single-line-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */

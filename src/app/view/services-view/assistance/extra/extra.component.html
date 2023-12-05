@@ -1,0 +1,219 @@
+<div>
+  <div id="page">
+    <div class="page-content py-0 my-0">
+      <div class="page-title page-title-small">
+        <h2 class="font-12">
+          <a href="#"><i class="fa fa-arrow-left"></i></a>Détails de vol
+        </h2>
+      </div>
+
+      <div class="card header-card" data-card-height="150">
+        <div class="card-overlay bg-black opacity-0"></div>
+        <div class="card-overlay dark-mode-tint"></div>
+        <div
+          class="card-bg preload-img"
+          data-src="assets/images/pictures/20s.jpg"
+        ></div>
+      </div>
+
+      <div class="card card-style">
+        <div class="content">
+          <!-- {{--
+            <h2 class="mb-3">Votre panier de réservations</h2>
+            --}} {{--
+            <div class="divider mx-0 my-0"></div>
+            --}} {{--
+            <p class="font-12 m-0 p-0">
+              Appuyer sur une offre pour la modifier ou la supprimer
+            </p>
+            --}} -->
+
+          <h5>Informations de vol</h5>
+
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="loading">
+              <div class="align-self-center align-item-center">
+                <div class="spinner-border color-highlight" role="status"></div>
+                <p>Chargement en cours...</p>
+              </div>
+            </div>
+            <div *ngIf="!loading">
+              <div class="col-12" style="margin-top: 20px">
+                <div class="input-style-2 input-required">
+                  <span class="input-style-1-active">Aéroport d'arrivée</span>
+                </div>
+              </div>
+
+              <div class="input-style input-style-2 input-required">
+                <span class="color-highlight">D'où venez-vous ?</span>
+                <em> </em>
+                <select
+                  class="form-control filled"
+                  id="arrival_airport_id"
+                  formControlName="arrival_airport_id"
+                  required
+                  *ngIf="airports.length > 0; else noAirportsMessage"
+                >
+                  <option value="" selected>
+                    Sélectionnez l'aéroport d'arrivé
+                  </option>
+                  <option
+                    *ngFor="let airport of airports"
+                    [value]="airports.id"
+                  >
+                    {{ airport.name }}
+                  </option>
+                </select>
+              </div>
+              <ng-template #noAirportsMessage>
+                <p>Aucun aéroport disponible pour le moment.</p>
+              </ng-template>
+              <div class="input-style-2 input-required">
+                <span class="input-style-1-active">Date de Vol</span>
+                <input
+                  type="date"
+                  value="2022-08-26"
+                  style="height: 50px"
+                  id="arrival_at"
+                  formControlName="arrival_at"
+                />
+              </div>
+              <div class="input-style-2 input-required">
+                <span class="input-style-1-active">Heure du Vol</span>
+                <input
+                  type="time"
+                  id="arrival_time"
+                  formControlName="arrival_time"
+                  value="23:30"
+                  sstyle="height: 50px;"
+                />
+              </div>
+            </div>
+
+            <div
+              class="content border border-blue2-dark rounded-s shadow-xs my-1 mx-0 px-2 py-1"
+              *ngFor="let option of theAirport.options"
+            >
+              <h1 class="mb-n2 font-14 font-700">{{ option.name }}</h1>
+              <h1 class="float-right font-700 font-12 mt-n3 mb-0">
+                {{ option.pivot.amount }}
+                <sup>FCFA</sup>
+              </h1>
+              <p class="mb-0 font-10 d-flex align-item-center">
+                <input
+                  type="checkbox"
+                  value="{{ option.pivot.amount }}"
+                  style="margin-right: 5px"
+                />Accueil VIP à l'arrivée
+              </p>
+              <p
+                class="mb-n1 font-10"
+                style="
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+              >
+                {{ option.description }}
+              </p>
+            </div>
+
+            <div class="divider my-2"></div>
+
+            <div class="divider divider-margins my-2"></div>
+            <div class="input-style input-style-2 input-required">
+              <span class="color-highlight input-style-1-active"
+                >Requête spéciale</span
+              >
+              <em> </em>
+              <input
+                class="form-control filled"
+                placeholder="Entrer votre requête"
+              />
+            </div>
+
+            <div class="divider divider-margins py-1 my-2"></div>
+
+            <h5 class="text-center">Résumé</h5>
+            <!-- <p class="my-0">Montant avec TVA incluse</p> -->
+            <div
+              class="row mt-2 mb-0"
+              *ngFor="let service of theAirport.services"
+            >
+              <ng-container *ngIf="service.identifier == 'SER0002'">
+                <div class="col-6 text-left">
+                  <h6 class="font-600 color-blue2-dark">Prèstation</h6>
+                </div>
+                <div class="col-6 text-right">
+                  <h6 class="font-600 color-blue2-dark">
+                    {{
+                      service.pivot.default_price.toLocaleString("fr-FR", {
+                        maximumFractionDigits: 0
+                      })
+                    }}
+
+                    <sup>FCFA</sup>
+                  </h6>
+                </div>
+                <div class="col-6 text-left">
+                  <h6 class="font-600 color-blue2-dark">Extra</h6>
+                </div>
+                <div class="col-6 text-right">
+                  <h6 class="font-600 color-blue2-dark">
+                    <span class="price">
+                      {{ service.extra ?? 00 }}
+                    </span>
+
+                    <sup>FCFA</sup>
+                  </h6>
+                </div>
+                <div class="col-12">
+                  <div class="divider mt-1 mb-2"></div>
+                </div>
+                <div class="col-6 text-left">
+                  <h4>Total à payer</h4>
+                </div>
+                <div class="col-6 text-right">
+                  <h4>
+                    <span class="price">
+                      {{ service.total ?? 00 }}
+                    </span>
+                  </h4>
+                </div>
+              </ng-container>
+            </div>
+
+            <div class="divider my-2"></div>
+
+            <button
+              class="btn btn-full bg-highlight btn-m rounded-sm shadow-xl text-uppercase font-900 mb-2 w-100"
+              type="submit"
+              [disabled]="myForm.invalid"
+            >
+              Valider
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end of page content-->
+
+    <!-- {{-- <div id="sh-menu-cart-pop-item-edit" data-menu-load="sh-menu-cart-pop-item-edit.html"
+          class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="455"
+          data-menu-effect="menu-over">
+      </div> --}} -->
+
+    <!-- {{-- <div id="sh-menu-success-2" class="menu menu-box-bottom menu-box-detached bg-blue2-dark rounded-m"
+          data-menu-height="305" data-menu-effect="menu-over">
+          <h3 class="text-center mt-4"><i class="fa fa-3x fa-check-circle color-white shadow-xl rounded-circle"></i>
+          </h3>
+          <h5 class="text-center mt-3 text-uppercase font-700 color-white">Paiement effectué avec succès</h5>
+          <p class="my-0 boxed-text-l color-white opacity-70">Vous recevrez par email les détails de votre paiement et
+              la confirmation de votre réservation</p>
+          <p class="my-0 boxed-text-l color-white opacity-70">Merci de votre confiance</p>
+           <a href="sh-reservation.html" class="my-2 btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-white">Terminer</a>
+          <a href="sh-index.html"
+              class="my-2 btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-white">Terminer</a>
+      </div> --}} -->
+  </div>
+</div>

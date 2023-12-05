@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../store/services/data/api.service';
-import { NavigationService } from '../../../store/helpers/navigation.service';
+import { ApiService } from '../../../../store/services/data/api.service';
+import { NavigationService } from '../../../../store/helpers/navigation.service';
+// import { ApiService } from '../../../store/services/data/api.service';
+// import { NavigationService } from '../../../store/helpers/navigation.service';
 
 @Component({
   selector: 'app-detail-res',

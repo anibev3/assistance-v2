@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { LocalStorageService } from '../../../store/services/session/local-storage.service';
-import { NavigationService } from '../../../store/helpers/navigation.service';
+import { LocalStorageService } from '../../../../store/services/session/local-storage.service';
+import { NavigationService } from '../../../../store/helpers/navigation.service';
+// import { LocalStorageService } from '../../../store/services/session/local-storage.service';
+// import { NavigationService } from '../../../store/helpers/navigation.service';
 
 @Component({
   selector: 'app-info-passager1',

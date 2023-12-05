@@ -8,11 +8,11 @@ import { MapDisplayComponent } from '../components/map-display.component';
 import { NgIf } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
-import { TransportService } from '../../../store/services/transport.service';
-import { PlaceCoordinates } from '../../../store/models/transport/transport.model';
-import { AuthService } from '../../../store/auth.service';
+// import { TransportService } from '../../../store/services/transport.service';
+// import { PlaceCoordinates } from '../../../store/models/transport/transport.model';
+// import { AuthService } from '../../../store/auth.service';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../../../store/services/session/local-storage.service';
+// import { LocalStorageService } from '../../../store/services/session/local-storage.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +24,10 @@ import {
   MatSnackBarLabel,
   MatSnackBarRef,
 } from '@angular/material/snack-bar';
+import { PlaceCoordinates } from '../../../../store/models/transport/transport.model';
+import { TransportService } from '../../../../store/services/transport.service';
+import { AuthService } from '../../../../store/auth.service';
+import { LocalStorageService } from '../../../../store/services/session/local-storage.service';
 
 @Component({
   selector: 'app-map-start-reservation-transport',

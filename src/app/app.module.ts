@@ -6,35 +6,52 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './view/home/home.component';
 import { HeaderComponent } from './view/component/header/header.component';
 import { FooterComponent } from './view/component/footer/footer.component';
-import { ShMenuCartPopItemEditTransportComponent } from './view/transport/components/sh-menu-cart-pop-item-edit-transport/sh-menu-cart-pop-item-edit-transport.component';
-import { TransHomeComponent } from './view/transport/trans-home/trans-home.component';
-import { PanierTransportComponent } from './view/transport/components/panier-transport/panier-transport.component';
+// import { ShMenuCartPopItemEditTransportComponent } from './view/transport/components/sh-menu-cart-pop-item-edit-transport/sh-menu-cart-pop-item-edit-transport.component';
+// import { TransHomeComponent } from './view/transport/trans-home/trans-home.component';
+// import { PanierTransportComponent } from './view/transport/components/panier-transport/panier-transport.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './view/session/register/register.component';
 import { LoginComponent } from './view/session/login/login.component';
-import { SelectedCarComponent } from './view/transport/selected-car/selected-car.component';
+// import { SelectedCarComponent } from './view/transport/selected-car/selected-car.component';
 import { IgxCarouselModule, IgxListModule } from 'igniteui-angular';
-import { InfoPassager1Component } from './view/transport/info-passager1/info-passager1.component';
-import { InfoPassager2Component } from './view/transport/info-passager2/info-passager2.component';
+// import { InfoPassager1Component } from './view/transport/info-passager1/info-passager1.component';
+// import { InfoPassager2Component } from './view/transport/info-passager2/info-passager2.component';
 import { ReplacePipe } from './store/helpers/replace.pipe';
 import { TestComponent } from './view/test/test/test.component';
 import {
   BrowserAnimationsModule,
   NoopAnimationsModule,
 } from '@angular/platform-browser/animations';
-import { ResumComponent } from './view/transport/resum/resum.component';
-import { PaiementComponent } from './view/transport/paiement/paiement.component';
-import { SuccessComponent } from './view/transport/success/success.component';
-import { FailureComponent } from './view/transport/failure/failure.component';
+// import { ResumComponent } from './view/transport/resum/resum.component';
+// import { PaiementComponent } from './view/transport/paiement/paiement.component';
+// import { SuccessComponent } from './view/transport/success/success.component';
+// import { FailureComponent } from './view/transport/failure/failure.component';
 import { HistoriqueComponent } from './view/historique/historique.component';
 import { TabViewModule } from 'primeng/tabview';
 import { PaginatorModule } from 'primeng/paginator';
 import { CustomDatePipe } from './store/helpers/date.pipe';
-import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
-import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
-import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
+import { HomeAssistanceComponent } from './view/services-view/assistance/home-assistance/home-assistance.component';
+import { TransHomeComponent } from './view/services-view/transport/trans-home/trans-home.component';
+import { TpDetailResComponent } from './view/services-view/transport/tp-detail-res/tp-detail-res.component';
+import { PanierTransportComponent } from './view/services-view/transport/components/panier-transport/panier-transport.component';
+import { ShMenuCartPopItemEditTransportComponent } from './view/services-view/transport/components/sh-menu-cart-pop-item-edit-transport/sh-menu-cart-pop-item-edit-transport.component';
+import { SelectedCarComponent } from './view/services-view/transport/selected-car/selected-car.component';
+import { ResumComponent } from './view/services-view/transport/resum/resum.component';
+import { InfoPassager1Component } from './view/services-view/transport/info-passager1/info-passager1.component';
+import { PaiementComponent } from './view/services-view/transport/paiement/paiement.component';
+import { SuccessComponent } from './view/services-view/transport/success/success.component';
+import { FailureComponent } from './view/services-view/transport/failure/failure.component';
+import { DetailResComponent } from './view/services-view/assistance/detail-res/detail-res.component';
+import { ProfilComponent } from './view/profil/profil.component';
+import { RsDepartComponent } from './view/services-view/assistance/components/rs-depart.component';
+import { RsArriveeComponent } from './view/services-view/assistance/components/rs-arrivee.component';
+import { RsTransitComponent } from './view/services-view/assistance/components/rs-transit.component';
+import { ExtraComponent } from './view/services-view/assistance/extra/extra.component';
+// import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
+// import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
+// import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
 
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
 // import { MapStartReservationTransportComponent } from './view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
@@ -52,7 +69,7 @@ import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-
     LoginComponent,
     SelectedCarComponent,
     InfoPassager1Component,
-    InfoPassager2Component,
+    InfoPassager1Component,
     ReplacePipe,
     ResumComponent,
     PaiementComponent,
@@ -63,6 +80,11 @@ import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-
     DetailResComponent,
     TpDetailResComponent,
     HomeAssistanceComponent,
+    ProfilComponent,
+    RsDepartComponent,
+    RsArriveeComponent,
+    RsTransitComponent,
+    ExtraComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +97,7 @@ import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-
     BrowserAnimationsModule,
     TabViewModule,
     PaginatorModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

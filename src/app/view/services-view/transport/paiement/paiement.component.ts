@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { NavigationService } from '../../../store/helpers/navigation.service';
-import { PaiementService } from '../../../store/services/paiement/paiement.service';
-import { LocalStorageService } from '../../../store/services/session/local-storage.service';
+import { NavigationService } from '../../../../store/helpers/navigation.service';
+import { PaiementService } from '../../../../store/services/paiement/paiement.service';
+import { LocalStorageService } from '../../../../store/services/session/local-storage.service';
+// import { NavigationService } from '../../../store/helpers/navigation.service';
+// import { PaiementService } from '../../../store/services/paiement/paiement.service';
+// import { LocalStorageService } from '../../../store/services/session/local-storage.service';
 
 @Component({
   selector: 'app-paiement',
