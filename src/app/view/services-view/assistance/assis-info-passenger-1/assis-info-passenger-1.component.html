@@ -1,0 +1,414 @@
+<div id="page">
+  <!-- header and footer bar go here-->
+  <div *ngIf="loading">
+    <div class="align-self-center align-item-center">
+      <span
+        class="spinner-border spinner-border-sm"
+        role="status"
+        aria-hidden="true"
+      ></span>
+      <p>Chargement en cours...</p>
+    </div>
+  </div>
+  <div *ngIf="!loading">
+    <div class="page-content py-0 my-0">
+      <div class="page-title page-title-small">
+        <h3 class="vi-white">
+          <span><i class="fa fa-arrow-left icon-back"></i></span>Détails du
+          passager (1/2)
+        </h3>
+      </div>
+
+      <div class="card header-card" data-card-height="150">
+        <div class="card-overlay bg-black opacity-0"></div>
+        <div class="card-overlay dark-mode-tint"></div>
+        <div
+          class="card-bg preload-img"
+          data-src="assets/images/pictures/20s.jpg"
+        ></div>
+      </div>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="card card-style">
+          <div class="content">
+            <!--  -->
+            <!--  -->
+            <div class="d-flex justify-content-between">
+              <div
+                class="align-self-center align-item-center"
+                style="margin-top: -10px"
+              >
+                <h1 class="mb-n2 font-14 font-700">Réserver pour moi</h1>
+              </div>
+              <div class="d-flex justify-content-between" style="margin: -15px">
+                <div
+                  data-toggle="collapse"
+                  href="#collapse-price"
+                  [class.rs-for-me-option]="selectedOption === true"
+                  class="content rounded-s shadow-xs"
+                  (click)="selectOption(true)"
+                  data-toast="sh-alert"
+                  style="height: 30px; width: 58px; margin-right: -8px"
+                >
+                  <h1
+                    class="mb-n2 font-14 font-700 mb-0 text-center"
+                    style="margin-left: -3px"
+                  >
+                    OUI
+                  </h1>
+                </div>
+                <div
+                  [class.rs-for-me-option]="selectedOption === false"
+                  class="content rounded-s shadow-xs"
+                  (click)="selectOption(false)"
+                  data-toast="sh-alert"
+                  style="height: 30px; width: 58px"
+                >
+                  <h1
+                    class="mb-n2 font-14 font-700 mb-0 text-center"
+                    style="margin-left: -3px"
+                  >
+                    NON
+                  </h1>
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <!--  -->
+            <!--  -->
+            <!-- <div class="input-style input-style-2 mb-3 input-required">
+              <div class="input-style-2 input-required">
+                <span class="input-style-1-active">Réservez pour moi ?</span>
+              </div>
+              <em><i class="fa fa-angle-down"></i></em>
+              <a data-toggle="collapse" href="#collapse-price" class="font-500"
+                >OUI</a
+              >
+              <select
+                class="form-control"
+                id="reservationForMe"
+                formControlName="reservationForMe"
+                (change)="onReservationForMeChange($event)"
+                required
+              >
+                <option selected disabled>Réserver pour moi ?</option>
+                <option value="true">
+                  <a
+                    data-toggle="collapse"
+                    href="#collapse-price"
+                    class="font-500"
+                    >OUI</a
+                  >
+                </option>
+                <option value="false">NON</option>
+              </select>
+            </div> -->
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active">Prénom</span>
+              <em>(*)</em>
+              <input
+                class="form-control"
+                type="name"
+                placeholder="Entrez le prénom"
+                id="passengerFirstName"
+                formControlName="passengerFirstName"
+                required
+              />
+            </div>
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active">Nom</span>
+              <em>(*)</em>
+              <input
+                class="form-control"
+                type="name"
+                placeholder="Entrez le nom"
+                id="passengerLastName"
+                formControlName="passengerLastName"
+                required
+              />
+            </div>
+
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active"
+                >Adresse email</span
+              >
+              <em>(*)</em>
+              <input
+                class="form-control"
+                type="email"
+                placeholder="Entrez l'Adresse de notification"
+                id="email"
+                formControlName="passengerEmail"
+                required
+              />
+            </div>
+
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active"
+                >Numéro de téléphone mobile</span
+              >
+              <em>(*)</em>
+              <input
+                class="form-control"
+                type="name"
+                placeholder="Ex: +225 07 08 00 77 31"
+                id="contact"
+                formControlName="passengerContact"
+                required
+              />
+            </div>
+
+            <div class="text-center my-1 py-0">
+              <div class="collapse" id="collapse-price">
+                <div class="input-style input-style-2 input-required mb-3">
+                  <span class="color-highlight input-style-1-active"
+                    >Numéro de téléphone secondaire</span
+                  >
+                  <em>(*)</em>
+                  <input
+                    class="form-control"
+                    type="name"
+                    placeholder="Ex: +225 07 08 00 77 31"
+                    id="contact"
+                    formControlName="contact"
+                    required
+                  />
+                </div>
+
+                <div class="input-style input-style-2 mb-3 input-required">
+                  <div class="input-style-2 input-required">
+                    <span class="input-style-1-active">Class de voyage</span>
+                  </div>
+                  <em><i class="fa fa-angle-down"></i></em>
+                  <select
+                    class="form-control"
+                    id="flightClass"
+                    formControlName="flightClass"
+                    required
+                  >
+                    <option selected disabled>Class de voyage</option>
+                    <option value="economyc">economyc</option>
+                    <option value="business">business</option>
+                    <option value="first">first</option>
+                  </select>
+                </div>
+                <div class="input-style input-style-2 mb-3 input-required">
+                  <div class="input-style-2 input-required">
+                    <span class="input-style-1-active">Nombre de passager</span>
+                  </div>
+                  <em><i class="fa fa-angle-down"></i></em>
+                  <select
+                    class="form-control"
+                    id="numberOfPassenger"
+                    formControlName="numberOfPassenger"
+                    required
+                  >
+                    <option selected disabled>Passagers</option>
+                    <option value="true">OUI</option>
+                    <option value="false">NON</option>
+                  </select>
+                </div>
+
+                <div class="input-style input-style-2 mb-3 input-required">
+                  <div class="input-style-2 input-required">
+                    <span class="input-style-1-active">Nombre de bagages</span>
+                  </div>
+                  <em><i class="fa fa-angle-down"></i></em>
+                  <select
+                    class="form-control"
+                    id="numberOfBags"
+                    formControlName="numberOfBags"
+                    required
+                  >
+                    <option selected disabled>Bagages</option>
+                    <option value="true">OUI</option>
+                    <option value="false">NON</option>
+                  </select>
+                </div>
+
+                <div class="input-style input-style-2 input-required mb-3">
+                  <span class="color-highlight input-style-1-active"
+                    >Panneau d'accueil</span
+                  >
+
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Ex: +225 07 08 00 77 31"
+                    id="welcomePanel"
+                    formControlName="welcomePanel"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="card card-style">
+        <div class="content">
+          <h3>Méthode de paiement</h3>
+          <div class="input-style input-style-2 mb-3 input-required">
+            <em><i class="fa fa-angle-down"></i></em>
+            <select class="form-control">
+              <option selected disabled>
+                Sélectionner une méthode de paiement
+              </option>
+              <option value="1">Carte de crédit (Visa - Mastercard)</option>
+              <option value="2">Mobile Money (Orange - MTN - Flooz)</option>
+              <option value="3">Wallet (Wave)</option>
+            </select>
+          </div>
+        </div>
+      </div> -->
+
+        <!-- <div class="card card-style">
+        <div class="content">
+          <h3>Détails de paiement</h3>
+          <div class="input-style input-style-2 input-required mb-3">
+            <span class="color-highlight input-style-1-active">Nom du détenteur de la carte</span>
+            <em>(*)</em>
+            <input class="form-control" type="text" placeholder="Ex: KONE WIL" />
+          </div>
+          <div class="input-style input-style-2 input-required mb-3">
+            <span class="color-highlight input-style-1-active">Numéro de carte</span>
+            <em>(*)</em>
+            <input
+              class="form-control"
+              type="number"
+              placeholder="Ex: 1234 5678 9012 3456"
+            />
+          </div>
+          <div class="row mb-0">
+            <div class="col-7">
+              <div class="input-style input-style-2 input-required mb-3">
+                <span class="color-highlight">Valide jusqu'au</span>
+                <em>(*)</em>
+                <input
+                  class="form-control"
+                  type="month"
+                  placeholder="Ex: 12/2025"
+                />
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="input-style input-style-2 input-required mb-3">
+                <span class="color-highlight">CVV</span>
+                <em>(*)</em>
+                <input class="form-control" type="text" placeholder="Ex: 123" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+        <div
+          class="card mt-4 preload-img mb-0"
+          data-src="assets/images/pictures/20s.jpg"
+        >
+          <div class="card-body py-4">
+            <h2 class="color-white text-center">Confirmer le Paiement</h2>
+            <p class="color-white boxed-text-xl">
+              Appuyer sur le bouton pour confirmer le paiement
+            </p>
+            <div class="card card-style mx-0">
+              <div class="content">
+                <div class="row mt-2 mb-0">
+                  <div class="col-6 text-left">
+                    <h6 class="font-600">Total</h6>
+                  </div>
+                  <div class="col-6 text-right">
+                    <h6 class="font-600">0 <sup>A</sup></h6>
+                  </div>
+                  <div class="col-6 text-left">
+                    <h6 class="font-600 color-blue2-dark">Réduction Fidelux</h6>
+                  </div>
+                  <div class="col-6 text-right">
+                    <h6 class="font-600 color-blue2-dark">
+                      -10 000 <sup>FCFA</sup>
+                    </h6>
+                  </div>
+                  <div class="col-12">
+                    <div class="divider mt-1 mb-2"></div>
+                  </div>
+                  <div class="col-6 text-left"><h4>Total à payer</h4></div>
+                  <div class="col-6 text-right">
+                    <h4>90 000 <sup>FCFA</sup></h4>
+                  </div>
+                </div>
+
+                <div class="divider mt-1"></div>
+
+                <button
+                  class="btn btn-full bg-highlight btn-m rounded-sm shadow-xl text-uppercase font-900 mb-2 w-100"
+                  type="submit"
+                  [disabled]="submittingForm"
+                >
+                  <!-- [disabled]="myForm.invalid"
+              > -->
+                  <span *ngIf="!submittingForm">Continuez</span>
+                  <span
+                    *ngIf="submittingForm"
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-overlay bg-black opacity-95"></div>
+          <div class="card-overlay dark-mode-tint"></div>
+        </div>
+      </form>
+    </div>
+    <!-- end of page content-->
+
+    <!-- <div
+      id="sh-menu-cart-pop-item-edit"
+      data-menu-load="sh-menu-cart-pop-item-edit.html"
+      class="menu menu-box-bottom menu-box-detached rounded-m"
+      data-menu-height="455"
+      data-menu-effect="menu-over"
+    ></div> -->
+
+    <div
+      id="sh-menu-success-2"
+      class="menu menu-box-bottom menu-box-detached bg-blue2-dark rounded-m"
+      data-menu-height="305"
+      data-menu-effect="menu-over"
+    >
+      <h3 class="text-center mt-4">
+        <i
+          class="fa fa-3x fa-check-circle color-white shadow-xl rounded-circle"
+        ></i>
+      </h3>
+      <h5 class="text-center mt-3 text-uppercase font-700 color-white">
+        Paiement effectué avec succès
+      </h5>
+      <p class="my-0 boxed-text-l color-white opacity-70">
+        Vous recevrez par email les détails de votre paiement et la confirmation
+        de votre réservation
+      </p>
+      <p class="my-0 boxed-text-l color-white opacity-70">
+        Merci de votre confiance
+      </p>
+      <a
+        href="sh-reservation.html"
+        class="my-2 btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-white"
+        >Terminer</a
+      >
+    </div>
+  </div>
+</div>
+
+<div
+  class="snackbar-toast bg-green1-dark color-white text-center"
+  style="
+    margin-bottom: calc(100px + (env(safe-area-inset-bottom)) * 1.1) !important;
+    background-color: rgb(193, 14, 14) !important;
+  "
+  *ngIf="showSnackbar"
+>
+  <i class="fa fa-shopping-cart mr-3"></i>Remplissez tous les champs
+</div>

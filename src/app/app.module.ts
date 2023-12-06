@@ -49,6 +49,8 @@ import { RsDepartComponent } from './view/services-view/assistance/components/rs
 import { RsArriveeComponent } from './view/services-view/assistance/components/rs-arrivee.component';
 import { RsTransitComponent } from './view/services-view/assistance/components/rs-transit.component';
 import { ExtraComponent } from './view/services-view/assistance/extra/extra.component';
+import { AssisInfoPassenger1Component } from './view/services-view/assistance/assis-info-passenger-1/assis-info-passenger-1.component';
+import { AssisInfoPassenger2Component } from './view/services-view/assistance/assis-info-passenger-2/assis-info-passenger-2.component';
 // import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
 // import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
 // import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
@@ -85,6 +87,8 @@ import { ExtraComponent } from './view/services-view/assistance/extra/extra.comp
     RsArriveeComponent,
     RsTransitComponent,
     ExtraComponent,
+    AssisInfoPassenger1Component,
+    AssisInfoPassenger2Component,
   ],
   imports: [
     BrowserModule,

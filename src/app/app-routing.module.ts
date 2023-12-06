@@ -19,6 +19,8 @@ import { TransHomeComponent } from './view/services-view/transport/trans-home/tr
 import { MapStartReservationTransportComponent } from './view/services-view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
 import { ProfilComponent } from './view/profil/profil.component';
 import { ExtraComponent } from './view/services-view/assistance/extra/extra.component';
+import { AssisInfoPassenger1Component } from './view/services-view/assistance/assis-info-passenger-1/assis-info-passenger-1.component';
+import { AssisInfoPassenger2Component } from './view/services-view/assistance/assis-info-passenger-2/assis-info-passenger-2.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -77,6 +79,14 @@ const routes: Routes = [
   { path: 'assistance', component: HomeAssistanceComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'extra', component: ExtraComponent },
+  {
+    path: 'assis-info-passenger-m',
+    component: AssisInfoPassenger1Component,
+  },
+  {
+    path: 'assis-info-passenger-n',
+    component: AssisInfoPassenger2Component,
+  },
   // {
   //   path: 'paiement-reservation',
   //   component: PaiementReservationComponent,

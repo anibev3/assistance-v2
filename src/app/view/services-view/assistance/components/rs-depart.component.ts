@@ -79,9 +79,17 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
       <button
         class="btn btn-full bg-highlight btn-m rounded-sm shadow-xl text-uppercase font-900 mb-2 w-100"
         type="submit"
-        [disabled]="myForm.invalid"
+        [disabled]="submittingForm"
       >
-        Valider
+        <!-- [disabled]="myForm.invalid"
+            > -->
+        <span *ngIf="!submittingForm">Valider</span>
+        <span
+          *ngIf="submittingForm"
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
       </button>
       <div class="divider my-2"></div>
       <button
@@ -89,6 +97,19 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
       >
         Supprimer
       </button>
+
+      <div
+        class="snackbar-toast bg-green1-dark color-white text-center"
+        style="
+              margin-bottom: calc(
+                100px + (env(safe-area-inset-bottom)) * 1.1
+              ) !important;
+              background-color: rgb(193, 14, 14) !important;
+            "
+        *ngIf="showSnackbar"
+      >
+        <i class="fa fa-shopping-cart mr-3"></i>Remplissez tous les champs
+      </div>
     </form>
   `,
   styles: [``],
@@ -98,6 +119,10 @@ export class RsDepartComponent implements OnInit {
   airports: any = [];
   str1: string = 'airports';
   loading: boolean = true;
+  infoRs: any = [];
+  str2: string = 'assistanceDepartReservationInfo';
+  showSnackbar: boolean = false;
+  submittingForm: boolean = false;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -110,17 +135,45 @@ export class RsDepartComponent implements OnInit {
       this.apiService.getAirports()
     );
     this.airports = this.localStorageService.getItem(this.str1);
+    this.infoRs = this.localStorageService.getItem(this.str2);
 
-    this.myForm = new FormGroup({
-      departure_airport_id: new FormControl('', Validators.required),
-      departure_at: new FormControl('', Validators.required),
-      departure_time: new FormControl('', Validators.required),
-      departure_flight_number: new FormControl('', Validators.required),
-    });
+    if (this.infoRs) {
+      this.myForm = new FormGroup({
+        departure_airport_id: new FormControl(
+          this.infoRs.departure_airport_id,
+          Validators.required
+        ),
+        departure_at: new FormControl(
+          this.infoRs.departure_at,
+          Validators.required
+        ),
+        departure_time: new FormControl(
+          this.infoRs.departure_time,
+          Validators.required
+        ),
+        departure_flight_number: new FormControl(
+          this.infoRs.departure_flight_number
+        ),
+      });
+    } else {
+      const currentDate = new Date().toISOString().split('T')[0]; // Format "YYYY-MM-DD"
+      this.myForm = new FormGroup({
+        departure_airport_id: new FormControl('', Validators.required),
+        departure_at: new FormControl(currentDate, Validators.required),
+        departure_time: new FormControl('', Validators.required),
+        departure_flight_number: new FormControl('', Validators.required),
+      });
+    }
 
     this.loading = false;
   }
+
+  goTo(route_ohh: string): void {
+    this.navigationService.goToPage(route_ohh);
+  }
+
   onSubmit() {
+    this.submittingForm = true;
     console.log('La valeur est: ', this.myForm?.value);
     if (localStorage.getItem('assistanceArriveeReservationInfo')) {
       this.localStorageService.removeItem('assistanceArriveeReservationInfo');
@@ -129,16 +182,20 @@ export class RsDepartComponent implements OnInit {
       this.localStorageService.removeItem('assistanceTransitReservationInfo');
     }
 
-    // if (localStorage.getItem('assistanceArriveeReservationInfo')) {
-    //   this.localStorageService.removeItem('assistanceArriveeReservationInfo')
-    // }
-    this.localStorageService.setItem(
-      'assistanceDepartReservationInfo',
-      this.myForm.value
-    );
-    this.goTo('extra');
-  }
-  goTo(route_ohh: string): void {
-    this.navigationService.goToPage(route_ohh);
+    if (this.myForm.valid) {
+      this.localStorageService.setItem(this.str2, this.myForm.value);
+
+      console.log('La valeur est: ', this.myForm.value, this.infoRs);
+      this.goTo('extra');
+    } else {
+      this.showSnackbar = true;
+      setTimeout(() => {
+        this.showSnackbar = false;
+      }, 1000);
+    }
+
+    setTimeout(() => {
+      this.submittingForm = false;
+    }, 300);
   }
 }

@@ -3,7 +3,8 @@
     <div class="page-content py-0 my-0">
       <div class="page-title page-title-small">
         <h2 class="font-12">
-          <a href="#"><i class="fa fa-arrow-left"></i></a>Détails de vol
+          <a routerLink="/assistance"><i class="fa fa-arrow-left"></i></a
+          >Détails de vol
         </h2>
       </div>
 
@@ -29,24 +30,37 @@
             --}} -->
 
           <h5>Informations de vol</h5>
-
+          <div
+            class="snackbar-toast bg-green1-dark color-white text-center"
+            style="
+              margin-bottom: calc(
+                100px + (env(safe-area-inset-bottom)) * 1.1
+              ) !important;
+              background-color: rgb(193, 14, 14) !important;
+            "
+            *ngIf="showSnackbar"
+          >
+            <i class="fa fa-shopping-cart mr-3"></i>Remplissez tous les champs
+          </div>
           <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <div *ngIf="loading">
               <div class="align-self-center align-item-center">
-                <div class="spinner-border color-highlight" role="status"></div>
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
                 <p>Chargement en cours...</p>
               </div>
             </div>
             <div *ngIf="!loading">
-              <div class="col-12" style="margin-top: 20px">
-                <div class="input-style-2 input-required">
-                  <span class="input-style-1-active">Aéroport d'arrivée</span>
-                </div>
+              <div class="input-style-2 input-required">
+                <span class="input-style-1-active">Aéroport d'arrivée</span>
               </div>
 
               <div class="input-style input-style-2 input-required">
-                <span class="color-highlight">D'où venez-vous ?</span>
-                <em> </em>
+                <!-- <span class="color-highlight">D'où venez-vous ?</span>
+                <em> </em> -->
                 <select
                   class="form-control filled"
                   id="arrival_airport_id"
@@ -57,10 +71,7 @@
                   <option value="" selected>
                     Sélectionnez l'aéroport d'arrivé
                   </option>
-                  <option
-                    *ngFor="let airport of airports"
-                    [value]="airports.id"
-                  >
+                  <option *ngFor="let airport of airports" [value]="airport.id">
                     {{ airport.name }}
                   </option>
                 </select>
@@ -72,7 +83,7 @@
                 <span class="input-style-1-active">Date de Vol</span>
                 <input
                   type="date"
-                  value="2022-08-26"
+                  value=""
                   style="height: 50px"
                   id="arrival_at"
                   formControlName="arrival_at"
@@ -84,15 +95,18 @@
                   type="time"
                   id="arrival_time"
                   formControlName="arrival_time"
-                  value="23:30"
+                  value=""
                   sstyle="height: 50px;"
                 />
               </div>
             </div>
 
             <div
-              class="content border border-blue2-dark rounded-s shadow-xs my-1 mx-0 px-2 py-1"
+              class="content rounded-s shadow-xs my-1 mx-0 mt-2 px-2 py-1"
               *ngFor="let option of theAirport.options"
+              (click)="handleClick(option)"
+              [ngClass]="{ 'selected-option': isSelected(option) }"
+              data-toast="sh-alert"
             >
               <h1 class="mb-n2 font-14 font-700">{{ option.name }}</h1>
               <h1 class="float-right font-700 font-12 mt-n3 mb-0">
@@ -102,9 +116,10 @@
               <p class="mb-0 font-10 d-flex align-item-center">
                 <input
                   type="checkbox"
-                  value="{{ option.pivot.amount }}"
+                  [checked]="isSelected(option)"
                   style="margin-right: 5px"
-                />Accueil VIP à l'arrivée
+                />
+                Accueil VIP à l'arrivée
               </p>
               <p
                 class="mb-n1 font-10"
@@ -129,6 +144,9 @@
               <input
                 class="form-control filled"
                 placeholder="Entrer votre requête"
+                id="special_request"
+                formControlName="special_request"
+                value=""
               />
             </div>
 
@@ -188,9 +206,17 @@
             <button
               class="btn btn-full bg-highlight btn-m rounded-sm shadow-xl text-uppercase font-900 mb-2 w-100"
               type="submit"
-              [disabled]="myForm.invalid"
+              [disabled]="submittingForm"
             >
-              Valider
+              <!-- [disabled]="myForm.invalid"
+            > -->
+              <span *ngIf="!submittingForm">Valider</span>
+              <span
+                *ngIf="submittingForm"
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
             </button>
           </form>
         </div>

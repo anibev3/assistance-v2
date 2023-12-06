@@ -104,3 +104,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 } */
+
+.selected-option {
+  border: 1px solid black; /* Choisissez le style de contour souhaité */
+}
+
+.rs-for-me-option {
+  border: 1px solid rgb(0, 0, 0); /* Mettez le style que vous souhaitez pour la sélection */
+}

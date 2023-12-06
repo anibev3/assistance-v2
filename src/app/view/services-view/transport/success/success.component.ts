@@ -102,7 +102,7 @@ export class SuccessComponent implements OnInit {
                 console.log(responseJson);
 
                 // Extract data for email template
-                // const email = (sessionStorage.getItem('formDataTosend.reservation_for_me') === 'true') ? sessionStorage.getItem('user.email') : sessionStorage.getItem('formDataTosend.passenger_mail');
+                // const email = (sessionStorage.getItem('formDataTosend.reservationForMe') === 'true') ? sessionStorage.getItem('user.email') : sessionStorage.getItem('formDataTosend.passenger_mail');
                 // const email = 'anibe.mails@gmail.com';
                 // const name =
                 //   this.localStorageService.getItem('user.lastName') +
