@@ -21,6 +21,7 @@ import { ProfilComponent } from './view/profil/profil.component';
 import { ExtraComponent } from './view/services-view/assistance/extra/extra.component';
 import { AssisInfoPassenger1Component } from './view/services-view/assistance/assis-info-passenger-1/assis-info-passenger-1.component';
 import { AssisInfoPassenger2Component } from './view/services-view/assistance/assis-info-passenger-2/assis-info-passenger-2.component';
+import { ResumAssisComponent } from './view/services-view/assistance/resum-assis/resum-assis.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -86,6 +87,10 @@ const routes: Routes = [
   {
     path: 'assis-info-passenger-n',
     component: AssisInfoPassenger2Component,
+  },
+  {
+    path: 'assis-resum-info',
+    component: ResumAssisComponent,
   },
   // {
   //   path: 'paiement-reservation',

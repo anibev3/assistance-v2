@@ -21,6 +21,7 @@ export class AssisInfoPassenger1Component {
   str2: string = 'assistanceDepartReservationInfo';
   str3: string = 'assistancArriveeReservationInfo';
   str4: string = 'assistanceTransitReservationInfo';
+  str5: string = 'assis-info-passenger-m';
   loading: boolean = true;
   theAirport: any = {};
   airports: any = {};
@@ -28,6 +29,7 @@ export class AssisInfoPassenger1Component {
   showSnackbar: boolean = false;
   submittingForm: boolean = false;
   selectedOption: boolean | null = false;
+  isCollapseVisible: boolean | null = false;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -43,24 +45,18 @@ export class AssisInfoPassenger1Component {
   }
   ngOnInit() {
     this.airports = this.localStorageService.getItem(this.str1);
-    this.infoRs = this.localStorageService.getItem(this.str2);
+    this.infoRs = this.localStorageService.getItem(this.str5);
 
     if (this.infoRs) {
       // Si les données sont présentes, utilisez-les pour initialiser le formulaire
+      this.selectedOption = this.infoRs.reservationForMe;
+      if (this.selectedOption) {
+        this.isCollapseVisible = true;
+      }
       this.myForm = new FormGroup({
-        reservationForMe: new FormControl(
-          this.infoRs.reservationForMe,
-          Validators.required
-        ),
-        passengerFirstName: new FormControl(
-          this.infoRs.passengerFirstName,
-          Validators.required
-        ),
-
-        passengerLastName: new FormControl(
-          this.infoRs.passengerLastName,
-          Validators.required
-        ),
+        reservationForMe: new FormControl(this.infoRs.reservationForMe),
+        passengerFirstName: new FormControl(this.infoRs.passengerFirstName),
+        passengerLastName: new FormControl(this.infoRs.passengerLastName),
         passengerEmail: new FormControl(this.infoRs.passengerEmail),
         passengerContact: new FormControl(this.infoRs.passengerContact),
         contact: new FormControl(this.infoRs.contact),
@@ -69,15 +65,18 @@ export class AssisInfoPassenger1Component {
         numberOfBags: new FormControl(this.infoRs.numberOfBags),
         welcomePanel: new FormControl(this.infoRs.welcomePanel),
       });
-      console.log('efkjgherk', this.infoRs.passengerFirstName);
+      console.log('Info dispo en storage', this.infoRs);
+      // console.log('Info dispo en storage', this.myForm.value);
 
-      this.selectedOptions = this.infoRs.options || [];
+      // this.selectedOptions = this.infoRs.options || [];
     } else {
+      console.log('Il n y a aucune donnée en storage');
+
       // Si les données ne sont pas présentes, créez un nouveau formulaire
       const currentDate = new Date().toISOString().split('T')[0]; // Format "YYYY-MM-DD"
       this.myForm = new FormGroup({
-        reservationForMe: new FormControl('', Validators.required),
-        passengerFirstName: new FormControl(currentDate),
+        reservationForMe: new FormControl(''),
+        passengerFirstName: new FormControl(''),
         passengerLastName: new FormControl(''),
         passengerEmail: new FormControl(''),
         passengerContact: new FormControl(''),
@@ -89,26 +88,44 @@ export class AssisInfoPassenger1Component {
       });
     }
 
-    this.getAirportInfo(this.infoRs.departure_airport_id);
+    // this.getAirportInfo(this.infoRs.departure_airport_id);
     this.loading = false;
   }
   onSubmit() {
     this.submittingForm = true;
     // Vérifiez si le formulaire est valide
+    this.myForm.value.reservationForMe = this.selectedOption;
+    console.log('this.myForm.valid', this.myForm.valid);
+    console.log('this.myForm.value', this.myForm.value);
+    console.log('reservation for me', this.selectedOption);
+
     if (this.myForm.valid) {
-      this.infoRs.reservationForMe = this.myForm.value.reservationForMe;
-      this.infoRs.passengerFirstName = this.myForm.value.passengerFirstName;
-      this.infoRs.passengerLastName = this.myForm.value.passengerLastName;
-      this.infoRs.passengerEmail = this.myForm.value.passengerEmail;
+      // this.infoRs.reservationForMe = this.selectedOption;
+      this.infoRs = this.myForm.value;
 
-      this.infoRs.passengerContact = this.myForm.value.passengerContact;
-      this.infoRs.contact = this.myForm.value.contact;
-      this.infoRs.flightClass = this.myForm.value.flightClass;
-      this.infoRs.numberOfPassenger = this.myForm.value.numberOfPassenger;
-      this.infoRs.numberOfBags = this.myForm.value.numberOfBags;
-      this.infoRs.welcomePanel = this.myForm.value.welcomePanel;
+      // if (this.infoRs.reservationForMe) {
+      //   // IF RESERVATION FOR ME IS TRUE
+      //   console.log('IF RESERVATION FOR ME IS TRUE');
+      //   this.infoRs.contact = this.myForm.value.contact;
+      //   this.infoRs.contact = this.myForm.value.contact;
+      //   this.infoRs.flightClass = this.myForm.value.flightClass;
+      //   this.infoRs.numberOfPassenger = this.myForm.value.numberOfPassenger;
+      //   this.infoRs.numberOfBags = this.myForm.value.numberOfBags;
+      //   this.infoRs.welcomePanel = this.myForm.value.welcomePanel;
 
-      // this.localStorageService.setItem(this.str2, this.infoRs);
+      //   this.localStorageService.setItem(this.str5, this.infoRs);
+      // } else if (!this.infoRs.reservationForMe) {
+      //   // IF RESERVATION FOR ME IS FALSE
+      //   console.log('IF RESERVATION FOR ME IS FALSE');
+      //   this.infoRs.passengerFirstName = this.myForm.value.passengerFirstName;
+      //   this.infoRs.passengerLastName = this.myForm.value.passengerLastName;
+      //   this.infoRs.passengerEmail = this.myForm.value.passengerEmail;
+      //   this.infoRs.passengerContact = this.myForm.value.passengerContact;
+
+      //   this.localStorageService.setItem(this.str5, this.infoRs);
+      // }
+
+      this.localStorageService.setItem(this.str5, this.infoRs);
 
       console.log('La valeur est: ', this.myForm.value, this.infoRs);
     } else {
@@ -126,7 +143,50 @@ export class AssisInfoPassenger1Component {
       this.submittingForm = false;
     }, 300);
 
-    // this.goTo('assis-info-passenger-m');
+    if (this.myForm.value.reservationForMe) {
+      if (
+        !this.myForm.value.contact ||
+        !this.myForm.value.flightClass ||
+        !this.myForm.value.numberOfPassenger ||
+        !this.myForm.value.numberOfBags ||
+        !this.myForm.value.welcomePanel
+      ) {
+        this.showSnackbar = true;
+        this.submittingForm = true;
+        setTimeout(() => {
+          this.showSnackbar = false;
+        }, 1000);
+        setTimeout(() => {
+          this.submittingForm = false;
+        }, 300);
+
+        return;
+      }
+      setTimeout(() => {
+        this.goTo('assis-resum-info');
+      }, 300);
+    } else {
+      if (
+        !this.myForm.value.passengerFirstName ||
+        !this.myForm.value.passengerLastName ||
+        !this.myForm.value.passengerEmail ||
+        !this.myForm.value.passengerContact
+      ) {
+        this.showSnackbar = true;
+        this.submittingForm = true;
+        setTimeout(() => {
+          this.showSnackbar = false;
+        }, 1000);
+        setTimeout(() => {
+          this.submittingForm = false;
+        }, 300);
+
+        return;
+      }
+      setTimeout(() => {
+        this.goTo('assis-info-passenger-n');
+      }, 300);
+    }
   }
 
   getAirportInfo(airportId: string) {
@@ -162,5 +222,13 @@ export class AssisInfoPassenger1Component {
 
   selectOption(option: boolean) {
     this.selectedOption = option;
+  }
+
+  toggleCollapse() {
+    if (this.selectedOption === true) {
+      this.isCollapseVisible = true;
+    } else {
+      this.isCollapseVisible = false;
+    }
   }
 }

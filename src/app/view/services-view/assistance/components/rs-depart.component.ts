@@ -120,7 +120,7 @@ export class RsDepartComponent implements OnInit {
   str1: string = 'airports';
   loading: boolean = true;
   infoRs: any = [];
-  str2: string = 'assistanceDepartReservationInfo';
+  str2: string = 'assis-depart-info';
   showSnackbar: boolean = false;
   submittingForm: boolean = false;
 

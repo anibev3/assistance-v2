@@ -51,6 +51,7 @@ import { RsTransitComponent } from './view/services-view/assistance/components/r
 import { ExtraComponent } from './view/services-view/assistance/extra/extra.component';
 import { AssisInfoPassenger1Component } from './view/services-view/assistance/assis-info-passenger-1/assis-info-passenger-1.component';
 import { AssisInfoPassenger2Component } from './view/services-view/assistance/assis-info-passenger-2/assis-info-passenger-2.component';
+import { ResumAssisComponent } from './view/services-view/assistance/resum-assis/resum-assis.component';
 // import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
 // import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
 // import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
@@ -89,6 +90,7 @@ import { AssisInfoPassenger2Component } from './view/services-view/assistance/as
     ExtraComponent,
     AssisInfoPassenger1Component,
     AssisInfoPassenger2Component,
+    ResumAssisComponent,
   ],
   imports: [
     BrowserModule,

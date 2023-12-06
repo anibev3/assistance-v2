@@ -12,10 +12,12 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
 export class ExtraComponent {
   myForm!: FormGroup;
   infoRs: any = [];
+  infoRs0: any = [];
   str1: string = 'airports';
-  str2: string = 'assistanceDepartReservationInfo';
+  str2: string = 'assis-depart-info';
   str3: string = 'assistancArriveeReservationInfo';
   str4: string = 'assistanceTransitReservationInfo';
+  str5: string = 'depart-extra-info';
   loading: boolean = true;
   theAirport: any = {};
   airports: any = {};
@@ -30,7 +32,8 @@ export class ExtraComponent {
   ) {}
   ngOnInit() {
     this.airports = this.localStorageService.getItem(this.str1);
-    this.infoRs = this.localStorageService.getItem(this.str2);
+    this.infoRs0 = this.localStorageService.getItem(this.str2);
+    this.infoRs = this.localStorageService.getItem(this.str5);
 
     if (this.infoRs) {
       // Si les données sont présentes, utilisez-les pour initialiser le formulaire
@@ -49,6 +52,7 @@ export class ExtraComponent {
           Validators.required
         ),
         special_request: new FormControl(this.infoRs.special_request),
+        // options: new FormControl(this.infoRs.option),
       });
       console.log('efkjgherk', this.infoRs.arrival_at);
 
@@ -61,23 +65,25 @@ export class ExtraComponent {
         arrival_at: new FormControl(currentDate, Validators.required),
         arrival_time: new FormControl('', Validators.required),
         special_request: new FormControl(''),
+        options: new FormControl(''),
       });
     }
 
-    this.getAirportInfo(this.infoRs.departure_airport_id);
+    this.getAirportInfo(this.infoRs0.departure_airport_id);
     this.loading = false;
   }
   onSubmit() {
     this.submittingForm = true;
+    this.myForm.value.options = this.selectedOptions;
     // Vérifiez si le formulaire est valide
     if (this.myForm.valid) {
-      this.infoRs.arrival_airport_id = this.myForm.value.arrival_airport_id;
-      this.infoRs.arrival_at = this.myForm.value.arrival_at;
-      this.infoRs.arrival_time = this.myForm.value.arrival_time;
-      this.infoRs.special_request = this.myForm.value.special_request;
-      this.infoRs.options = this.selectedOptions;
+      // this.infoRs.arrival_airport_id = this.myForm.value.arrival_airport_id;
+      // this.infoRs.arrival_at = this.myForm.value.arrival_at;
+      // this.infoRs.arrival_time = this.myForm.value.arrival_time;
+      // this.infoRs.special_request = this.myForm.value.special_request;
+      // this.infoRs.options = this.selectedOptions;
 
-      this.localStorageService.setItem(this.str2, this.infoRs);
+      this.localStorageService.setItem(this.str5, this.myForm.value);
 
       console.log('La valeur est: ', this.myForm.value, this.infoRs);
     } else {
