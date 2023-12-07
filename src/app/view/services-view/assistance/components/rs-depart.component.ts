@@ -15,30 +15,32 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
         </div>
       </div>
       <div *ngIf="!loading">
-        <div class="mb-2 rounded-s shadow-xs">
-          <div class="col-12" style="margin-top: 20px">
-            <div class="input-style-2 input-required">
-              <span class="input-style-1-active">Aéroport de départ</span>
-              <select
-                class="form-control filled"
-                id="departure_airport_id"
-                formControlName="departure_airport_id"
-                required
-                *ngIf="airports.length > 0; else noAirportsMessage"
-              >
-                <option value="" selected>
-                  Sélectionnez l'aéroport de départ
-                </option>
-                <option *ngFor="let airport of airports" [value]="airport.id">
-                  {{ airport.name }}
-                </option>
-              </select>
+        <div class="mb-2 rounded-s" style="margin: 10px;">
+          <div *ngIf="canShow">
+            <div class="" style="margin-top: 20px">
+              <div class="input-style-2 input-required">
+                <span class="input-style-1-active">Aéroport de départ</span>
+                <select
+                  class="form-control filled"
+                  id="departure_airport_id"
+                  formControlName="departure_airport_id"
+                  required
+                  *ngIf="airports.length > 0; else noAirportsMessage"
+                >
+                  <option value="" selected>
+                    Sélectionnez l'aéroport de départ
+                  </option>
+                  <option *ngFor="let airport of airports" [value]="airport.id">
+                    {{ airport.name }}
+                  </option>
+                </select>
+              </div>
             </div>
           </div>
           <ng-template #noAirportsMessage>
             <p>Aucun aéroport disponible pour le moment.</p>
           </ng-template>
-          <div class="col-12">
+          <div class="">
             <div class="input-style-2 input-required">
               <span class="input-style-1-active">Date de Vol</span>
               <input
@@ -50,7 +52,7 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
               />
             </div>
           </div>
-          <div class="col-12">
+          <div class="">
             <div class="input-style-2 input-required">
               <span class="input-style-1-active">Heure du Vol</span>
               <input
@@ -62,7 +64,7 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
               />
             </div>
           </div>
-          <div class="col-12">
+          <div class="">
             <div class="input-style-2 input-required">
               <span class="input-style-1-active">Numéro de Vol</span>
               <input
@@ -121,8 +123,13 @@ export class RsDepartComponent implements OnInit {
   loading: boolean = true;
   infoRs: any = [];
   str2: string = 'assis-depart-info';
+  code_service: string = 'SER0002';
+  name: string = 'Accueil au départ';
+  description: string =
+    "Accueil uniquement au départ des passagers à l'aéroport";
   showSnackbar: boolean = false;
   submittingForm: boolean = false;
+  canShow: boolean = false;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -162,10 +169,16 @@ export class RsDepartComponent implements OnInit {
         departure_at: new FormControl(currentDate, Validators.required),
         departure_time: new FormControl('', Validators.required),
         departure_flight_number: new FormControl('', Validators.required),
+        code_service: new FormControl(''),
+        name: new FormControl(''),
+        description: new FormControl(''),
       });
     }
 
     this.loading = false;
+    if (this.airports) {
+      this.canShow = true;
+    }
   }
 
   goTo(route_ohh: string): void {
@@ -183,6 +196,9 @@ export class RsDepartComponent implements OnInit {
     }
 
     if (this.myForm.valid) {
+      this.myForm.value.code_service = this.code_service;
+      this.myForm.value.name = this.name;
+      this.myForm.value.description = this.description;
       this.localStorageService.setItem(this.str2, this.myForm.value);
 
       console.log('La valeur est: ', this.myForm.value, this.infoRs);

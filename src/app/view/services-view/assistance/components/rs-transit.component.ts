@@ -15,8 +15,8 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
         </div>
       </div>
       <div *ngIf="!loading">
-        <div class="mb-2 rounded-s shadow-xs">
-          <div class="col-12" style="margin-top: 20px">
+        <div class="mb-2 rounded-s" style="margin: 10px;">
+          <div class="" style="margin-top: 20px">
             <div class="input-style-2 input-required">
               <span class="input-style-1-active">Aéroport</span>
               <select
@@ -36,7 +36,7 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
           <ng-template #noAirportsMessage>
             <p>Aucun aéroport disponible pour le moment.</p>
           </ng-template>
-          <div class="col-12">
+          <div class="">
             <div class="input-style-2 input-required">
               <span class="input-style-1-active">Date - Départ</span>
               <input
@@ -48,7 +48,7 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
               />
             </div>
           </div>
-          <div class="col-12">
+          <div class="">
             <div class="input-style-2 input-required">
               <span class="input-style-1-active">Heure - Départ</span>
               <input
@@ -60,7 +60,7 @@ import { NavigationService } from '../../../../store/helpers/navigation.service'
               />
             </div>
           </div>
-          <div class="col-12">
+          <div class="">
             <div class="input-style-2 input-required">
               <span class="input-style-1-active">Numéro de Vol</span>
               <input

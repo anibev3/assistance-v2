@@ -40,7 +40,7 @@ import { ShMenuCartPopItemEditTransportComponent } from './view/services-view/tr
 import { SelectedCarComponent } from './view/services-view/transport/selected-car/selected-car.component';
 import { ResumComponent } from './view/services-view/transport/resum/resum.component';
 import { InfoPassager1Component } from './view/services-view/transport/info-passager1/info-passager1.component';
-import { PaiementComponent } from './view/services-view/transport/paiement/paiement.component';
+import { PaiementComponent } from './view/services-view/components/paiement.component';
 import { SuccessComponent } from './view/services-view/transport/success/success.component';
 import { FailureComponent } from './view/services-view/transport/failure/failure.component';
 import { DetailResComponent } from './view/services-view/assistance/detail-res/detail-res.component';
@@ -52,6 +52,7 @@ import { ExtraComponent } from './view/services-view/assistance/extra/extra.comp
 import { AssisInfoPassenger1Component } from './view/services-view/assistance/assis-info-passenger-1/assis-info-passenger-1.component';
 import { AssisInfoPassenger2Component } from './view/services-view/assistance/assis-info-passenger-2/assis-info-passenger-2.component';
 import { ResumAssisComponent } from './view/services-view/assistance/resum-assis/resum-assis.component';
+import { AssisServicesComponent } from './view/services-view/assistance/assis-services/assis-services.component';
 // import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
 // import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
 // import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
@@ -91,6 +92,7 @@ import { ResumAssisComponent } from './view/services-view/assistance/resum-assis
     AssisInfoPassenger1Component,
     AssisInfoPassenger2Component,
     ResumAssisComponent,
+    AssisServicesComponent,
   ],
   imports: [
     BrowserModule,

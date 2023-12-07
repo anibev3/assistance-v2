@@ -148,4 +148,50 @@ export class ApiService {
   }
 
   // ================================================================================
+
+  // ================================================================================
+  //  DEBUT APPEL DE L'API DE RESERVATION TRANSPORT
+  // ================================================================================
+
+  initiateTransportReservation(form_data: any[]): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    // HTTP headers
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+      accept: 'application/json',
+    });
+
+    console.log('======> la formData de stripe: ', form_data);
+
+    return this.http.post<any>(
+      `${this.transportBaseUrl}/request/create`,
+      form_data,
+      { headers }
+    );
+  }
+
+  // ================================================================================
+
+  // ================================================================================
+  //  DEBUT APPEL DE L'API DE RESERVATION TRANSPORT
+  // ================================================================================
+
+  initiateAssistanceReservation(form_data: any): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    // HTTP headers
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+      accept: 'application/json',
+    });
+
+    console.log('======> la formData de stripe: ', form_data);
+
+    return this.http.post<any>(
+      `${this.assistanceBaseUrl}/api/v1/reservations`,
+      form_data,
+      { headers }
+    );
+  }
+
+  // ================================================================================
 }

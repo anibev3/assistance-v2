@@ -31,6 +31,22 @@ export class SuccessComponent implements OnInit {
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.queryParams['session_id'];
 
+    let lesAmounts = this.localStorageService.getItem('lesAmounts');
+    let adresse_de_facturation = this.localStorageService.getItem(
+      'adresse-de-facturation'
+    );
+    let depart_extra_info =
+      this.localStorageService.getItem('depart-extra-info');
+    let depart_airport = this.localStorageService.getItem('depart-airport');
+    let assis_depart_info =
+      this.localStorageService.getItem('assis-depart-info');
+    let assis_info_passenger_m = this.localStorageService.getItem(
+      'assis-info-passenger-m'
+    );
+    let assis_info_passenger_n = this.localStorageService.getItem(
+      'assis-info-passenger-n'
+    );
+
     switch (true) {
       case this.localStorageService.getItem('arrival_payment_id') !== null:
         this.paymentId = this.localStorageService.getItem('arrival_payment_id');
@@ -57,6 +73,11 @@ export class SuccessComponent implements OnInit {
         break;
     }
 
+    console.log(
+      'EEE',
+      this.localStorageService.getItem('departure_payment_id')
+    );
+
     if (this.sessionId === this.paymentId) {
       console.log("C'est vrai");
       if (this.localStorageService.getItem('transport_payment_id')) {
@@ -67,7 +88,6 @@ export class SuccessComponent implements OnInit {
           this.localStorageService.getItem('selectedVehicle');
         const token = localStorage.getItem('authToken');
 
-        // Prepare form data
         const formData = {
           pick_lat: tpMapInfo.pick_lat,
           pick_lng: tpMapInfo.pick_lng,
@@ -100,61 +120,165 @@ export class SuccessComponent implements OnInit {
               if (response.successful) {
                 const responseJson = response.data;
                 console.log(responseJson);
-
-                // Extract data for email template
-                // const email = (sessionStorage.getItem('formDataTosend.reservationForMe') === 'true') ? sessionStorage.getItem('user.email') : sessionStorage.getItem('formDataTosend.passenger_mail');
-                // const email = 'anibe.mails@gmail.com';
-                // const name =
-                //   this.localStorageService.getItem('user.lastName') +
-                //   this.localStorageService.getItem('user.firstName');
-                // const amount = responseJson.vehiculePrice;
-                // const amount = '1000';
-
-                // ... (other variables)
-
-                // Call your function to send notification
-                // this.sendTransportConfirmationNotif(email, name, amount, /* other parameters */);
-
-                // Store response JSON in session
-                // sessionStorage.setItem('transport_response_json', JSON.stringify(responseJson));
-
-                // Clear session data
-                // this.localStorageService.removeItem('coord_de_depart');
-                // this.localStorageService.removeItem('coord_d_arrivee');
-
-                // Redirect to the next page
-                // this.router.navigate(['/web-service02/sh-booking-vehicle-receved']);
               }
             },
             (error) => {
               console.error('Error:', error);
-              // Handle error as needed
             }
           );
+      } else {
+        console.log("C'est ça meme 22");
 
-        // sendTransportConfirmationNotif(email: string, name: string, amount: string /* other parameters */) {
-        //   // Implement your notification logic here
-        // }
+        let formData = {};
+
+        // Prepare form data
+        // ================================================================================
+        //  FORM DATA ARRIVAL
+        // ================================================================================
+        if (this.localStorageService.getItem('arrival_payment_id')) {
+          formData = {
+            // contact : 'berkhbvei',
+            // flight_number : 'nhejvbjhe',
+            // flight_company : ,
+            // flight_class : ,
+            // welcome_panel : ,
+            // number_of_bags : ,
+            // number_of_passengers : ,
+            // reservation_type_id : 1,
+            // departure_airport_id : ,
+            // arrival_airport_id :,
+            // arrival_at :,
+            // arrival_time : i,
+            // special_request : ,
+            // service_at :,
+            // departure_time :,
+            // departure_at : ,
+            // reservation_for_me : ,
+            // passenger_name : ,
+            // passenger_contact : ,
+            // options : ,
+          };
+        }
+        // ================================================================================
+
+        // ================================================================================
+        //  FORM DATA DDEPARTURE
+        // ================================================================================
+        if (this.localStorageService.getItem('departure_payment_id')) {
+          let options = depart_extra_info.options;
+          // let ids: string[] = options.map(
+          //   (option: { id: { toString: () => any } }) => option.id.toString()
+          // ); // sortie: ['1', '2']
+
+          let ids: number[] = options.map((option: { id: any }) => option.id); // sortie: [1, 2]
+
+          console.log(ids);
+
+          console.log(options);
+
+          let contact;
+          let flightClass;
+          let numberOfBags;
+          let numberOfPassenger;
+          let welcomePanel;
+          let passengerName;
+          let passengerEmail;
+          let passengerContact;
+          if (assis_info_passenger_m.reservationForMe) {
+            contact = assis_info_passenger_m.contact;
+            flightClass = assis_info_passenger_m.flightClass;
+            numberOfBags = assis_info_passenger_m.numberOfBags;
+            numberOfPassenger = assis_info_passenger_m.numberOfPassenger;
+            welcomePanel = assis_info_passenger_m.welcomePanel;
+          } else {
+            passengerName = assis_info_passenger_m.passengerLastName;
+            passengerEmail = assis_info_passenger_m.passengerEmail;
+            passengerContact = assis_info_passenger_m.passengerLastName;
+            flightClass = assis_info_passenger_n.flightClass;
+            numberOfBags = assis_info_passenger_n.numberOfBags;
+            numberOfPassenger = assis_info_passenger_n.numberOfPassenger;
+            welcomePanel = assis_info_passenger_n.welcomePanel;
+          }
+
+          formData = {
+            contact: contact,
+            flight_number: assis_depart_info.departure_flight_number,
+            flight_company: null,
+            flight_class: flightClass,
+            welcome_panel: welcomePanel,
+            number_of_bags: numberOfBags,
+            number_of_passengers: numberOfPassenger,
+            reservation_type_id: 2,
+            departure_airport_id: assis_depart_info.departure_airport_id,
+            arrival_airport_id: depart_extra_info.arrival_airport_id,
+            arrival_at: depart_extra_info.arrival_at,
+            arrival_time: depart_extra_info.arrival_time,
+            special_request: depart_extra_info.special_request,
+            service_at:
+              assis_depart_info.departure_at +
+              ' ' +
+              assis_depart_info.departure_time,
+            departure_time: assis_depart_info.departure_time,
+            departure_at: assis_depart_info.departure_at,
+            reservation_for_me: assis_info_passenger_m.reservationForMe,
+            passenger_name: passengerName,
+            passenger_contact: passengerContact,
+            options: ids,
+          };
+        }
+        console.log('Visionnage de la form data', formData);
+
+        // ================================================================================
+
+        // ================================================================================
+        //  FORM DATA TRANSIT
+        // ================================================================================
+        if (this.localStorageService.getItem('transit_payment_id')) {
+          formData = {
+            //   contact : ,
+            //   flight_number : ,
+            //   transit_flight_number : ,
+            //   flight_company : ,
+            //   flight_class : ,
+            //   welcome_panel : ,
+            //   number_of_bags : ,
+            //   number_of_passengers : ,
+            //   reservation_type_id : 3,
+            //   departure_airport_id : ,
+            //   transit_airport_id : ,
+            //   arrival_at : ,
+            //   departure_at : ,
+            //   arrival_time : ,
+            //   special_request : ,
+            //   service_at : ,
+            //   departure_time : ,
+            //   reservation_for_me : ,
+            //   passenger_name : ,
+            //   passenger_contact : ,
+            //   options : ,
+          };
+        }
+        // ================================================================================
+
+        this.apiService.initiateAssistanceReservation(formData).subscribe(
+          (paymentResponse) => {
+            console.log(
+              'La response de l api de rreservation',
+              paymentResponse
+            );
+
+            if (paymentResponse.success) {
+              return (window.location.href = paymentResponse.data.session_url);
+            } else {
+              console.error('Échec du paiement.');
+            }
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
       }
     }
-
-    // Appelez l'API avec l'identifiant de session
-    // this.apiService.callApiAfterPaymentSuccess(sessionId).subscribe(
-    //   (response) => {
-    //     // Traitez la réponse de l'API
-    //     console.log(response);
-
-    //     // Redirigez l'utilisateur vers la page de succès
-    //     // (vous pouvez également utiliser une méthode de navigation appropriée)
-    //     window.location.href = '/success-page';
-    //   },
-    //   (error) => {
-    //     console.error(error);
-
-    //     // Redirigez l'utilisateur vers la page d'échec si nécessaire
-    //     window.location.href = '/error-page';
-    //   }
-    // );
   }
 
   goTo(route_ohh: string): void {

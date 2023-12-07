@@ -6,7 +6,7 @@ import { SuccessComponent } from './view/services-view/transport/success/success
 import { FailureComponent } from './view/services-view/transport/failure/failure.component';
 import { HistoriqueComponent } from './view/historique/historique.component';
 import { DetailResComponent } from './view/services-view/assistance/detail-res/detail-res.component';
-import { PaiementComponent } from './view/services-view/transport/paiement/paiement.component';
+import { PaiementComponent } from './view/services-view/components/paiement.component';
 import { TestComponent } from './view/test/test/test.component';
 import { ResumComponent } from './view/services-view/transport/resum/resum.component';
 import { InfoPassager2Component } from './view/services-view/transport/info-passager2/info-passager2.component';
@@ -22,6 +22,8 @@ import { ExtraComponent } from './view/services-view/assistance/extra/extra.comp
 import { AssisInfoPassenger1Component } from './view/services-view/assistance/assis-info-passenger-1/assis-info-passenger-1.component';
 import { AssisInfoPassenger2Component } from './view/services-view/assistance/assis-info-passenger-2/assis-info-passenger-2.component';
 import { ResumAssisComponent } from './view/services-view/assistance/resum-assis/resum-assis.component';
+import { AuthGuard } from './store/fonctions/auth.gard';
+import { AssisServicesComponent } from './view/services-view/assistance/assis-services/assis-services.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -39,14 +41,17 @@ const routes: Routes = [
   {
     path: 'car',
     component: SelectedCarComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'info-passager-n',
     component: InfoPassager1Component,
+    canActivate: [AuthGuard],
   },
   {
     path: 'info-passager-m',
     component: InfoPassager2Component,
+    canActivate: [AuthGuard],
   },
   {
     path: 'test',
@@ -55,15 +60,18 @@ const routes: Routes = [
   {
     path: 'resum',
     component: ResumComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'paiement',
     component: PaiementComponent,
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'success',
     component: SuccessComponent,
+    canActivate: [AuthGuard],
   },
 
   {
@@ -74,23 +82,39 @@ const routes: Routes = [
   {
     path: 'historique',
     component: HistoriqueComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'assist-res-detail', component: DetailResComponent },
-  { path: 'transp-res-detail', component: TpDetailResComponent },
+  {
+    path: 'assist-res-detail',
+    component: DetailResComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'transp-res-detail',
+    component: TpDetailResComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'assistance', component: HomeAssistanceComponent },
-  { path: 'profil', component: ProfilComponent },
-  { path: 'extra', component: ExtraComponent },
+  { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
+  { path: 'extra', component: ExtraComponent, canActivate: [AuthGuard] },
   {
     path: 'assis-info-passenger-m',
     component: AssisInfoPassenger1Component,
+    canActivate: [AuthGuard],
   },
   {
     path: 'assis-info-passenger-n',
     component: AssisInfoPassenger2Component,
+    canActivate: [AuthGuard],
   },
   {
     path: 'assis-resum-info',
     component: ResumAssisComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'assis-services',
+    component: AssisServicesComponent,
   },
   // {
   //   path: 'paiement-reservation',

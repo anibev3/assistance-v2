@@ -18,6 +18,7 @@ export class ExtraComponent {
   str3: string = 'assistancArriveeReservationInfo';
   str4: string = 'assistanceTransitReservationInfo';
   str5: string = 'depart-extra-info';
+  str6: string = 'depart-airport';
   loading: boolean = true;
   theAirport: any = {};
   airports: any = {};
@@ -106,7 +107,7 @@ export class ExtraComponent {
         (responseData) => {
           this.theAirport = responseData;
           console.log('voici l aeroport en question ', this.theAirport);
-
+          this.localStorageService.setItem(this.str6, this.theAirport);
           this.loading = false;
         },
         (error) => {
