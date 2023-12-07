@@ -59,13 +59,24 @@
 
   <div class="page-content">
     <div class="page-title page-title-large">
-      <h2 data-username="Wilfried !" class="greeting-text"></h2>
-      <a
-        href="#"
-        data-menu="sh-menu-main"
-        class="bg-fade-gray1-dark shadow-xl preload-img"
-        data-src="assets/images/avatars/5s.png"
-      ></a>
+      <h2 class="">{{ userInfo.firstName }}</h2>
+      <div *ngIf="isAuthenticateed; else noAuthh">
+        <a
+          href="#"
+          data-menu="sh-menu-main"
+          class="bg-fade-gray1-dark shadow-xl preload-img"
+          data-src="assets/images/avatars/2s.png"
+        ></a>
+      </div>
+
+      <ng-template #noAuthh>
+        <a
+          href="#"
+          data-menu="sh-menu-main"
+          class="bg-fade-gray1-dark shadow-xl preload-img"
+          data-src="assets/images/avatars/hamburger.png"
+        ></a>
+      </ng-template>
     </div>
     <div class="card header-card" data-card-height="140">
       <div
@@ -151,7 +162,7 @@
 
     <div class="content">
       <h5 class="font-16 font-500 mb-0">
-        <a href="sh-srv01-index.html">
+        <a href="#">
           <i class="fa fa-home font-18 color-black"></i>
           <span class="color-black">Nos résidences par destination</span>
         </a>
@@ -185,13 +196,37 @@
           <div class="card-overlay bg-gradient"></div>
         </div>
       </div>
+      <div class="rounded-m shadow-l">
+        <div data-card-height="200" class="card mb-3 bg-1">
+          <div class="card-bottom">
+            <h5 class="color-white text-left ml-2 mb-0">Bouaké</h5>
+            <span
+              class="badge bg-highlight ml-2 mb-2 color-white text-uppercase"
+              >Sélectionner</span
+            >
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+      </div>
+      <div class="rounded-m shadow-l">
+        <div data-card-height="200" class="card mb-3 bg-2">
+          <div class="card-bottom">
+            <h5 class="color-white text-left ml-2 mb-0">Yamoussoukro</h5>
+            <span
+              class="badge bg-highlight ml-2 mb-2 color-white text-uppercase"
+              >San Pédro</span
+            >
+          </div>
+          <div class="card-overlay bg-gradient"></div>
+        </div>
+      </div>
     </div>
 
     <div class="divider divider-margins"></div>
 
     <div class="content">
       <h5 class="font-16 font-500 mb-0">
-        <a href="sh-srv02-index.html">
+        <a href="#">
           <i class="fa fa-car font-18 color-black"></i>
           <span class="color-black">Réservez une course sur Sherylux</span>
         </a>

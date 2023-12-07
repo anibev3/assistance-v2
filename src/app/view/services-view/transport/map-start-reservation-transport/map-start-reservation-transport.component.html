@@ -2,7 +2,6 @@
   <div class="spinner-border color-highlight" role="status"></div>
 </div>
 
-<!-- <div id="page"> -->
 <div class="d-flex flex-column">
   <div class="page-content py-0 my-0">
     <div
@@ -14,13 +13,6 @@
           ><i class="fa fa-arrow-left" style="font-size: 14px"></i></a
         >PRIVATE VIP CAR
       </h2>
-      <!-- <a
-        href="#"
-        data-menu="sh-menu-cart-pop-item-edit"
-        class="icon icon-s rounded-l shadow-xl bg-highlight color-white float-right"
-      >
-        <i class="fa fa-shopping-bag" style="font-size: 12px"></i>
-      </a> -->
     </div>
 
     <div class="card header-card" data-card-height="150">
@@ -41,20 +33,11 @@
       "
     >
       <div class="card mb-0" data-card-height="100vh">
-        <!-- <div
-          class="display-area"
-          [hidden]="!fromValue.address && !toValue.address"
-        > -->
-        <!-- <div>
-            <app-place-card [data]="fromValue"></app-place-card>
-            <app-place-card [data]="toValue"></app-place-card>
-          </div> -->
         <app-map-display
           [from]="fromValue"
           [to]="toValue"
           style="width: 100%"
         ></app-map-display>
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -99,34 +82,6 @@
               placeholder="Entrer votre lieu d'arrivée"
               label="Arrivée"
             ></app-place-autocomplete>
-            <!-- <div class="col-12">
-              <div class="input-style-2 input-required">
-                <span class="input-style-1-active">Départ</span>
-                <input
-                  type="text"
-                  placeholder="Entrer votre lieu de prise en charge"
-                />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="input-style-2 input-required">
-                <span class="input-style-1-active">Arrivée</span>
-                <input type="text" placeholder="" />
-              </div>
-            </div> -->
-
-            <!-- <div class="col-12">
-                <div class="input-style-2 input-required">
-                  <span class="input-style-1-active">Date de départ</span>
-                  <input
-                    type="date"
-                    name="date_depart"
-                    value="2022-08-26"
-                    [(ngModel)]="date_depart"
-                    style="height: 45px"
-                  />
-                </div>
-              </div> -->
 
             <div class="input-style input-style-2 input-required mb-3">
               <span class="color-highlight input-style-1-active"
@@ -142,7 +97,6 @@
               />
             </div>
 
-            <!-- <div class="col-12"> -->
             <div class="input-style input-style-2 input-required mb-3">
               <span class="color-highlight input-style-1-active"
                 >Heure de départ</span
@@ -157,28 +111,6 @@
                 [(ngModel)]="heure_depart"
               />
             </div>
-            <!-- <mat-form-field>
-              <mat-label>Snack bar duration (seconds)</mat-label>
-              <input type="number" [(ngModel)]="durationInSeconds" matInput>
-            </mat-form-field>
-
-            <button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
-              Pizza party
-            </button> -->
-
-            <!-- </div> -->
-
-            <!-- <div class="col-12">
-                <div class="input-style-2 input-required">
-                  <span class="input-style-1-active"></span>
-                  <input
-                    type="time"
-                    value="23:30"
-                    style="height: 45px"
-                    [(ngModel)]="heure_depart"
-                  />
-                </div>
-              </div> -->
             <button
               class="btn btn-full bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900 mb-2 w-100"
               style="padding: 6px 20px !important"
@@ -190,12 +122,72 @@
         </div>
 
         <div class="tab-content" id="tab-2">
-          <p class="bottom-0">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </p>
+          <div class="content">
+            <app-place-autocomplete
+              (placeChanged)="fromValue = $event"
+              placeholder="Entrer votre lieu de prise en charge"
+              label="Départ"
+            ></app-place-autocomplete>
+            <!-- <app-place-autocomplete
+              (placeChanged)="toValue = $event"
+              placeholder="Entrer votre lieu d'arrivée"
+              label="Arrivée"
+            ></app-place-autocomplete> -->
+
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active">Durée</span>
+              <!-- <em>(*)</em> -->
+              <select name="duree" id="duree">
+                <option value="">1 heure</option>
+                <option value="">2 heure</option>
+                <option value="">3 heure</option>
+                <option value="">4 heure</option>
+                <option value="">5 heure</option>
+                <option value="">6 heure</option>
+                <option value="">7 heure</option>
+                <option value="">8 heure</option>
+                <option value="">9 heure</option>
+                <option value="">10 heure</option>
+                <option value="">11 heure</option>
+                <option value="">12 heure</option>
+              </select>
+            </div>
+
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active"
+                >Date de départ</span
+              >
+              <!-- <em>(*)</em> -->
+              <input
+                class="form-control"
+                type="date"
+                name="date_depart"
+                style="height: 45px"
+                [(ngModel)]="date_depart"
+              />
+            </div>
+
+            <div class="input-style input-style-2 input-required mb-3">
+              <span class="color-highlight input-style-1-active"
+                >Heure de départ</span
+              >
+              <!-- <em>(*)</em> -->
+              <input
+                class="form-control"
+                type="time"
+                name="heure_depart"
+                value="23:30"
+                style="height: 45px"
+                [(ngModel)]="heure_depart"
+              />
+            </div>
+            <button
+              class="btn btn-full bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900 mb-2 w-100"
+              style="padding: 6px 20px !important"
+            >
+              Valider
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -220,6 +212,5 @@
 >
   <!-- <app-panier-transport></app-panier-transport> -->
 </div>
-<!-- </div> -->
 
 <!-- <mat-toolbar color="primary"> My Journey Planner </mat-toolbar> -->

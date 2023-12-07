@@ -10,6 +10,7 @@ import { LoginInfo } from './models/session/session.model';
 export class AuthService {
   private returnUrlKey = 'returnUrl';
   private tokenKey = 'authToken';
+  // private isAuthenticated: boolean = false;
 
   setReturnUrl(url: string): void {
     localStorage.setItem(this.returnUrlKey, url);

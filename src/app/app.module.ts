@@ -53,6 +53,7 @@ import { AssisInfoPassenger1Component } from './view/services-view/assistance/as
 import { AssisInfoPassenger2Component } from './view/services-view/assistance/assis-info-passenger-2/assis-info-passenger-2.component';
 import { ResumAssisComponent } from './view/services-view/assistance/resum-assis/resum-assis.component';
 import { AssisServicesComponent } from './view/services-view/assistance/assis-services/assis-services.component';
+import { MapStartReservationTransportComponent } from './view/services-view/transport/map-start-reservation-transport/map-start-reservation-transport.component';
 // import { DetailResComponent } from './view/assistance/detail-res/detail-res.component';
 // import { TpDetailResComponent } from './view/transport/tp-detail-res/tp-detail-res.component';
 // import { HomeAssistanceComponent } from './view/assistance/home-assistance/home-assistance.component';
@@ -94,6 +95,8 @@ import { AssisServicesComponent } from './view/services-view/assistance/assis-se
     ResumAssisComponent,
     AssisServicesComponent,
   ],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -106,8 +109,7 @@ import { AssisServicesComponent } from './view/services-view/assistance/assis-se
     TabViewModule,
     PaginatorModule,
     ReactiveFormsModule,
+    MapStartReservationTransportComponent,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

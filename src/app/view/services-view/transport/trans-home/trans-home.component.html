@@ -26,13 +26,13 @@
         <a href="#" data-back-button><i class="fa fa-arrow-left"></i></a>PRIVATE
         VIP CAR
       </h2>
-      <a
+      <!-- <a
         href="#"
         data-menu="sh-menu-cart-pop-item-list"
         class="icon icon-s rounded-l shadow-xl bg-highlight color-white float-right"
       >
         <i class="fa fa-shopping-bag"></i>
-      </a>
+      </a> -->
     </div>
 
     <div class="card header-card" data-card-height="150">
@@ -129,6 +129,7 @@
         <p class="mt-2 ml-0">
           <a
             href="#"
+            (click)="goToTransportMapPage()"
             data-menu="sh-menu-cart-pop-item-edit"
             class="btn bg-highlight btn-default rounded-sm font-500"
             >Réserver un trajet à l'heure/jour</a
@@ -154,7 +155,7 @@
     data-menu-height="455"
     data-menu-effect="menu-over"
   >
-    <!-- <app-sh-menu-cart-pop-item-edit-transport></app-sh-menu-cart-pop-item-edit-transport> -->
+    <!-- <app-map-start-reservation-transport></app-map-start-reservation-transport> -->
   </div>
 
   <div
