@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     }
 
     console.log('oh la', this.userInfo);
+    console.log(this.authService.isAuthenticated());
   }
 
   goToTransportHomePage(): void {

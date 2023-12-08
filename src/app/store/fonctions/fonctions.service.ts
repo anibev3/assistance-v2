@@ -18,4 +18,8 @@ export class FonctionsService {
   //   'fa fa-shopping-cart',
   //   'Ajouté avec succès'
   // );
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('user');
+   }
 }

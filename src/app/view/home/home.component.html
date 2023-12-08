@@ -58,8 +58,20 @@
   </div>
 
   <div class="page-content">
+    <!-- gestion de la connexion -->
+
     <div class="page-title page-title-large">
-      <h2 class="">{{ userInfo.firstName }}</h2>
+      <h2 class="greeting-text" style="font-size: 17px !important">
+        <!-- <a
+      href="#"
+      class="btn btn-xxs btn-full button-s shadow-l rounded-s text-uppercase font-700 bg-black text-white"
+      style="width: 120px"
+      >Se connecter</a
+    > -->
+        Bienvenu<br />
+        <span (click)="goTo('/login')"> se connecter</span>
+      </h2>
+      <!-- <div class="row mr-3 ml-3 mt-4"></div> -->
       <div *ngIf="isAuthenticateed; else noAuthh">
         <a
           href="#"
@@ -86,7 +98,10 @@
     </div>
 
     <div class="card-body">
-      <div class="card card-style ml-0 mr-0 mb-0 bg-white">
+      <div
+        class="card card-style ml-0 mr-0 mb-0 bg-white"
+        style="margin: -21px 16px 30px 16px"
+      >
         <div class="content">
           <div class="search-box bg-theme rounded-m shadow-xl bottom-0">
             <i class="fa fa-search"></i>

@@ -2000,9 +2000,9 @@ $(document).ready(function () {
       }
       $(".greeting-text").html(greetingMessage + ",<br>" + greetingUser);
     }
-    if (pageTitle.length) {
-      activate_pageGreeting();
-    }
+    // if (pageTitle.length) {
+    //   activate_pageGreeting();
+    // }
 
     //Cookie Greeting
     var visitDetection = $(".visit-detection");
